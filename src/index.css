@@ -96,6 +96,51 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-dark-gray text-white font-sans;
+    background: linear-gradient(135deg, #151515 0%, #ff0f4e 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+  
+  p {
+    @apply text-light-gray;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-bright-orange hover:bg-vibrant-pink text-white rounded-lg px-6 py-3 font-medium transition-all duration-300 shadow-lg hover:shadow-glow transform hover:-translate-y-1;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border border-bright-orange text-bright-orange hover:bg-bright-orange hover:text-white rounded-lg px-6 py-3 font-medium transition-all duration-300;
+  }
+  
+  .card {
+    @apply bg-gradient-card backdrop-blur-md border border-white/10 rounded-xl shadow-card p-6 transition-all duration-300 hover:shadow-lg;
+  }
+  
+  .section {
+    @apply py-16 md:py-24;
+  }
+  
+  .container {
+    @apply px-4 md:px-8 mx-auto max-w-7xl;
   }
 }

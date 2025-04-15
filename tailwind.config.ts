@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,12 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Custom colors for InsightHub
+				'dark-gray': '#151515',
+				'vibrant-pink': '#ff0f4e',
+				'bright-orange': '#ff3f00',
+				'light-gray': '#d3d3d3',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,12 +90,61 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(10px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'scale-in': {
+					'0%': {
+						transform: 'scale(0.95)',
+						opacity: '0'
+					},
+					'100%': {
+						transform: 'scale(1)',
+						opacity: '1'
+					}
+				},
+				'slide-in': {
+					'0%': {
+						transform: 'translateY(20px)',
+						opacity: '0'
+					},
+					'100%': {
+						transform: 'translateY(0)',
+						opacity: '1'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.4s ease-out forwards',
+				'scale-in': 'scale-in 0.3s ease-out',
+				'slide-in': 'slide-in 0.5s ease-out',
+				'slide-in-delay-1': 'slide-in 0.5s ease-out 0.1s both',
+				'slide-in-delay-2': 'slide-in 0.5s ease-out 0.2s both',
+				'slide-in-delay-3': 'slide-in 0.5s ease-out 0.3s both',
+				'slide-in-delay-4': 'slide-in 0.5s ease-out 0.4s both',
+				'slide-in-delay-5': 'slide-in 0.5s ease-out 0.5s both'
+			},
+			backgroundImage: {
+				'gradient-primary': 'linear-gradient(135deg, #151515 0%, #ff0f4e 100%)',
+				'gradient-card': 'linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)',
+			},
+			boxShadow: {
+				'glow': '0 0 20px rgba(255, 63, 0, 0.3)',
+				'card': '0 4px 20px rgba(0, 0, 0, 0.25)'
+			},
+			fontFamily: {
+				'sans': ['Inter', 'system-ui', 'sans-serif'],
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
