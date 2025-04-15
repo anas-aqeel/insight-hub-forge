@@ -1,4 +1,3 @@
-
 import { AlertTriangle, Clock, PieChart, Layers, BookX } from "lucide-react"
 import { ChallengeCard } from "./feature-cards/ChallengeCard"
 
@@ -8,32 +7,31 @@ export function ChallengesSection() {
       <div className="absolute top-1/2 right-0 w-80 h-80 bg-bright-orange/10 rounded-full blur-3xl -z-10"></div>
       
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-5 gap-12 items-center">
-          <div className="md:col-span-2 space-y-6 animate-slide-in">
-            <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 rounded-full mb-2 border border-vibrant-pink/30">
-              <AlertTriangle size={28} className="text-bright-orange" />
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white">
-              The Challenges Students Face Today
-            </h2>
-            <p className="text-xl text-light-gray">
-              Traditional learning methods are outdated and inefficient. Students often struggle to find 
-              personalized study material, stay productive, and manage the overwhelming amount of information 
-              in today's fast-paced academic world.
-            </p>
+        <div className="text-center max-w-3xl mx-auto mb-16 animate-slide-in">
+          <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 rounded-full mb-2 border border-vibrant-pink/30">
+            <AlertTriangle size={28} className="text-bright-orange" />
           </div>
-          
-          <div className="md:col-span-3 grid grid-cols-1 gap-6 animate-slide-in-delay-1">
-            {challenges.map((challenge, index) => (
-              <ChallengeCard 
-                key={index}
-                title={challenge.title}
-                description={challenge.description}
-                icon={challenge.icon}
-                imageSrc={challenge.imageSrc}
-              />
-            ))}
-          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            The Challenges Students Face Today
+          </h2>
+          <p className="text-xl text-light-gray">
+            Traditional learning methods are outdated and inefficient. Students often struggle to find 
+            personalized study material, stay productive, and manage the overwhelming amount of information 
+            in today's fast-paced academic world.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 gap-8 animate-slide-in-delay-1">
+          {challenges.map((challenge, index) => (
+            <ChallengeCard 
+              key={index}
+              title={challenge.title}
+              description={challenge.description}
+              icon={challenge.icon}
+              imageSrc={challenge.imageSrc}
+              reverse={index % 2 !== 0}
+            />
+          ))}
         </div>
       </div>
     </section>

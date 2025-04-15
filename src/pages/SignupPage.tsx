@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
+import { CountdownTimer } from "@/components/CountdownTimer";
 
 export default function SignupPage() {
   return (
@@ -11,6 +12,12 @@ export default function SignupPage() {
       <div className="absolute inset-0 bg-gradient-primary -z-10" />
       <div className="absolute top-0 left-0 w-full p-6">
         <Logo />
+      </div>
+      
+      <div className="mb-8 text-center">
+        <h2 className="text-2xl font-bold text-white mb-2">Early Access Closing In</h2>
+        <p className="text-light-gray mb-6">Secure your spot before the waitlist closes</p>
+        <CountdownTimer />
       </div>
       
       <Card className="w-full max-w-md animate-scale-in">

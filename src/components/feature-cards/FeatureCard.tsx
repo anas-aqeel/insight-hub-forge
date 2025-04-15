@@ -21,10 +21,12 @@ export function FeatureCard({ title, description, features, icon: Icon, imageSrc
       <CardContent className="p-0 h-full">
         <div className={`flex flex-col ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} h-full`}>
           <div className="p-8 w-full md:w-1/2 flex flex-col">
-            <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-lg bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 border border-vibrant-pink/30">
-              <Icon className="h-8 w-8 text-bright-orange" />
+            <div className="flex items-center gap-4 mb-6">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 border border-vibrant-pink/30">
+                <Icon className="h-6 w-6 text-bright-orange" />
+              </div>
+              <h3 className="text-2xl font-bold text-white">{title}</h3>
             </div>
-            <h3 className="text-2xl font-bold mb-4 text-white">{title}</h3>
             <p className="text-light-gray mb-6">
               {description}
             </p>
