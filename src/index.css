@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -96,8 +97,8 @@
   }
 
   body {
-    @apply bg-dark-gray text-white font-sans;
-    background: linear-gradient(135deg, #151515 0%, #ff0f4e 100%);
+    @apply bg-[#0a0a0a] text-white font-sans;
+    background: linear-gradient(135deg, #0a0a0a 0%, #151515 100%);
     background-attachment: fixed;
     min-height: 100vh;
   }
@@ -133,7 +134,7 @@
   }
   
   .card {
-    @apply bg-gradient-card backdrop-blur-md border border-white/10 rounded-xl shadow-card p-6 transition-all duration-300 hover:shadow-lg;
+    @apply bg-gradient-card backdrop-blur-md border border-vibrant-pink/20 rounded-xl p-6 transition-all duration-300 hover:border-vibrant-pink/40;
   }
   
   .section {

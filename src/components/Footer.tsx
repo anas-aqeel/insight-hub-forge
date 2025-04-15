@@ -9,7 +9,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
   
   return (
-    <footer className="py-16 md:py-20 border-t border-white/10 bg-black/30 backdrop-blur-sm">
+    <footer className="py-16 md:py-20 border-t border-vibrant-pink/20 bg-[#0a0a0a]/80 backdrop-blur-sm">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-12">
           <div className="md:col-span-5 lg:col-span-4">
@@ -20,11 +20,11 @@ export function Footer() {
             
             <div className="mt-8">
               <p className="text-white font-medium mb-4">Subscribe to our newsletter</p>
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <Input 
                   type="email" 
                   placeholder="Your email" 
-                  className="bg-white/5 border-white/10 text-white placeholder:text-white/50"
+                  className="bg-dark-gray/50 border-vibrant-pink/30 text-white placeholder:text-white/50"
                 />
                 <Button variant="default">Subscribe</Button>
               </div>
@@ -40,13 +40,13 @@ export function Footer() {
           </div>
           
           <div className="md:col-span-7 lg:col-span-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8">
               <FooterLinkGroup title="Quick Links">
                 <FooterLink href="/">Home</FooterLink>
-                <FooterLink href="/about">About</FooterLink>
-                <FooterLink href="/features">Features</FooterLink>
-                <FooterLink href="/pricing">Pricing</FooterLink>
-                <FooterLink href="/blog">Blog</FooterLink>
+                <FooterLink href="#about">About</FooterLink>
+                <FooterLink href="#features">Features</FooterLink>
+                <FooterLink href="#pricing">Pricing</FooterLink>
+                <FooterLink href="#faq">FAQ</FooterLink>
               </FooterLinkGroup>
               
               <FooterLinkGroup title="Resources">
@@ -64,16 +64,16 @@ export function Footer() {
               </FooterLinkGroup>
               
               <FooterLinkGroup title="Contact">
-                <li className="flex items-start gap-2 text-light-gray/70 hover:text-bright-orange transition-colors">
-                  <Mail size={16} className="shrink-0 mt-1" />
+                <li className="flex items-start gap-2 text-light-gray hover:text-bright-orange transition-colors">
+                  <Mail size={16} className="shrink-0 mt-1 text-bright-orange" />
                   <a href="mailto:info@insighthub.com">info@insighthub.com</a>
                 </li>
-                <li className="flex items-start gap-2 text-light-gray/70 hover:text-bright-orange transition-colors">
-                  <Phone size={16} className="shrink-0 mt-1" />
+                <li className="flex items-start gap-2 text-light-gray hover:text-bright-orange transition-colors">
+                  <Phone size={16} className="shrink-0 mt-1 text-bright-orange" />
                   <a href="tel:+12345678900">+1 (234) 567-8900</a>
                 </li>
-                <li className="flex items-start gap-2 text-light-gray/70">
-                  <MapPin size={16} className="shrink-0 mt-1" />
+                <li className="flex items-start gap-2 text-light-gray">
+                  <MapPin size={16} className="shrink-0 mt-1 text-bright-orange" />
                   <span>123 AI Street, Silicon Valley, CA 94043</span>
                 </li>
               </FooterLinkGroup>
@@ -81,9 +81,9 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-light-gray/70 text-sm">
+        <div className="pt-8 border-t border-vibrant-pink/20 flex flex-col md:flex-row justify-between items-center text-light-gray text-sm">
           <p>© {currentYear} InsightHub. All rights reserved.</p>
-          <div className="flex gap-6 mt-4 md:mt-0">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-4 md:mt-0">
             <Link to="/terms" className="hover:text-bright-orange transition-colors">Terms of Service</Link>
             <Link to="/privacy" className="hover:text-bright-orange transition-colors">Privacy Policy</Link>
             <Link to="/cookies" className="hover:text-bright-orange transition-colors">Cookie Policy</Link>
@@ -98,7 +98,7 @@ function SocialLink({ href, icon: Icon, label }: { href: string; icon: React.Com
   return (
     <a 
       href={href}
-      className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-light-gray hover:bg-bright-orange/20 hover:text-bright-orange transition-colors"
+      className="w-10 h-10 flex items-center justify-center rounded-full bg-dark-gray/50 border border-vibrant-pink/30 text-bright-orange hover:bg-bright-orange/20 hover:border-bright-orange/50 transition-colors"
       aria-label={label}
     >
       <Icon size={18} />
@@ -120,12 +120,12 @@ function FooterLinkGroup({ title, children }: { title: string; children: React.R
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <li>
-      <Link 
-        to={href}
-        className="text-light-gray/70 hover:text-bright-orange transition-colors"
+      <a 
+        href={href}
+        className="text-light-gray hover:text-bright-orange transition-colors"
       >
         {children}
-      </Link>
+      </a>
     </li>
   )
 }

@@ -10,11 +10,11 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-bright-orange text-white hover:bg-vibrant-pink hover:shadow-glow transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0",
-        destructive: "bg-red-500 text-white hover:bg-red-600",
-        outline: "border border-bright-orange bg-transparent text-bright-orange hover:bg-bright-orange hover:text-white transition-colors duration-300",
-        secondary: "bg-white/10 text-white hover:bg-white/20 transition-colors duration-300",
-        ghost: "bg-transparent hover:bg-white/10 text-light-gray hover:text-white",
+        default: "bg-bright-orange text-white hover:bg-vibrant-pink hover:border-vibrant-pink/50 border border-bright-orange/30 transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0",
+        destructive: "bg-red-500 text-white hover:bg-red-600 border border-red-500/30",
+        outline: "border border-bright-orange bg-transparent text-bright-orange hover:bg-bright-orange/10 hover:text-white transition-colors duration-300",
+        secondary: "bg-white/10 text-white border border-white/20 hover:bg-white/20 hover:border-white/30 transition-colors duration-300",
+        ghost: "bg-transparent hover:bg-white/10 text-white hover:text-bright-orange",
         link: "text-bright-orange underline-offset-4 hover:underline",
       },
       size: {

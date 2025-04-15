@@ -1,6 +1,6 @@
 
 import { AlertTriangle, Clock, PieChart, Layers, BookX } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card-custom"
+import { ChallengeCard } from "./feature-cards/ChallengeCard"
 
 export function ChallengesSection() {
   return (
@@ -10,7 +10,7 @@ export function ChallengesSection() {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-5 gap-12 items-center">
           <div className="md:col-span-2 space-y-6 animate-slide-in">
-            <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 rounded-full mb-2">
+            <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 rounded-full mb-2 border border-vibrant-pink/30">
               <AlertTriangle size={28} className="text-bright-orange" />
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-white">
@@ -23,21 +23,15 @@ export function ChallengesSection() {
             </p>
           </div>
           
-          <div className="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-6 animate-slide-in-delay-1">
+          <div className="md:col-span-3 grid grid-cols-1 gap-6 animate-slide-in-delay-1">
             {challenges.map((challenge, index) => (
-              <Card key={index} className="backdrop-blur-md">
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="inline-flex items-center justify-center p-2 rounded-full bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20">
-                      <challenge.icon className="h-6 w-6 text-bright-orange" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">{challenge.title}</h3>
-                      <p className="text-light-gray text-sm">{challenge.description}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              <ChallengeCard 
+                key={index}
+                title={challenge.title}
+                description={challenge.description}
+                icon={challenge.icon}
+                imageSrc={challenge.imageSrc}
+              />
             ))}
           </div>
         </div>
@@ -50,21 +44,25 @@ const challenges = [
   {
     title: "Information Overload",
     description: "Students are overwhelmed by the sheer volume of content available across different platforms.",
-    icon: Layers
+    icon: Layers,
+    imageSrc: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
   },
   {
     title: "Time Management",
     description: "Balancing coursework, personal projects, and self-study is increasingly difficult.",
-    icon: Clock
+    icon: Clock,
+    imageSrc: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
   },
   {
     title: "Ineffective Study Methods",
     description: "One-size-fits-all approaches fail to address individual learning styles and needs.",
-    icon: BookX
+    icon: BookX,
+    imageSrc: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
   },
   {
     title: "Lack of Insights",
     description: "Students rarely get meaningful feedback on their learning progress and knowledge gaps.",
-    icon: PieChart
+    icon: PieChart,
+    imageSrc: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
   }
 ]
