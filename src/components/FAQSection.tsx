@@ -1,11 +1,12 @@
 
-import { ChevronDown } from "lucide-react"
+import { ChevronDown, HelpCircle } from "lucide-react"
 import { 
   Accordion, 
   AccordionContent, 
   AccordionItem, 
   AccordionTrigger 
 } from "@/components/ui/accordion-custom"
+import { Card, CardContent } from "@/components/ui/card-custom"
 
 const faqs = [
   {
@@ -31,43 +32,56 @@ const faqs = [
   {
     question: "Is my data secure?",
     answer: "Yes, we take data security very seriously. We use industry-standard encryption and security practices to protect your personal information and learning data. We never sell your data to third parties."
+  },
+  {
+    question: "Can I use InsightHub on multiple devices?",
+    answer: "Yes, InsightHub is available on web browsers, and you can access your account from any device. We also have mobile apps for iOS and Android devices, allowing you to learn on the go."
+  },
+  {
+    question: "How do I get started?",
+    answer: "Simply sign up for a free account, choose your areas of interest, and start exploring the platform. You can upgrade to a paid plan anytime to access more features."
   }
 ]
 
 export function FAQSection() {
   return (
-    <section id="faq" className="py-20 relative">
+    <section id="faq" className="py-24 relative">
       <div className="absolute bottom-0 left-1/3 w-64 h-64 bg-vibrant-pink/10 rounded-full blur-3xl -z-10"></div>
       
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16 animate-slide-in">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Frequently Asked Questions</h2>
-          <p className="text-lg text-light-gray">
+          <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 rounded-full mb-4">
+            <HelpCircle size={32} className="text-bright-orange" />
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Frequently Asked Questions</h2>
+          <p className="text-xl text-light-gray">
             Got questions? We've got answers. If you don't see what you're looking for, reach out to our support team.
           </p>
         </div>
         
-        <div className="max-w-3xl mx-auto animate-slide-in-delay-1">
-          <Accordion type="single" collapsible className="space-y-4">
-            {faqs.map((faq, index) => (
-              <AccordionItem 
-                key={index} 
-                value={`item-${index}`}
-                className="border border-white/10 rounded-lg overflow-hidden bg-black/20 backdrop-blur-sm"
-              >
-                <AccordionTrigger className="px-6 py-4 text-white hover:text-bright-orange transition-colors text-left">
-                  <div className="flex justify-between items-center w-full">
-                    <span>{faq.question}</span>
-                    <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="px-6 pb-4 text-light-gray">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
+        <Card className="max-w-4xl mx-auto animate-slide-in-delay-1">
+          <CardContent className="p-8">
+            <Accordion type="single" collapsible className="space-y-4">
+              {faqs.map((faq, index) => (
+                <AccordionItem 
+                  key={index} 
+                  value={`item-${index}`}
+                  className="border border-white/10 rounded-lg overflow-hidden bg-black/20 backdrop-blur-sm"
+                >
+                  <AccordionTrigger className="px-6 py-4 text-white hover:text-bright-orange transition-colors text-left">
+                    <div className="flex justify-between items-center w-full">
+                      <span className="text-lg font-medium">{faq.question}</span>
+                      <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-6 text-light-gray">
+                    <p className="text-base leading-relaxed">{faq.answer}</p>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </CardContent>
+        </Card>
       </div>
     </section>
   )

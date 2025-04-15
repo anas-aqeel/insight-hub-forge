@@ -1,21 +1,36 @@
 
 import { Logo } from "./Logo"
 import { Link } from "react-router-dom"
-import { Facebook, Twitter, Linkedin, Instagram, Github } from "lucide-react"
+import { Facebook, Twitter, Linkedin, Instagram, Github, Mail, MapPin, Phone } from "lucide-react"
+import { Button } from "@/components/ui/button-custom"
+import { Input } from "@/components/ui/input"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
   
   return (
-    <footer className="py-12 md:py-16 border-t border-white/10 bg-black/30 backdrop-blur-sm">
+    <footer className="py-16 md:py-20 border-t border-white/10 bg-black/30 backdrop-blur-sm">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-12">
           <div className="md:col-span-5 lg:col-span-4">
             <Logo size="medium" />
             <p className="mt-4 text-light-gray max-w-md">
               InsightHub is an AI-powered learning ecosystem that helps students learn smarter, stay ahead, and achieve their academic goals faster.
             </p>
-            <div className="flex space-x-4 mt-6">
+            
+            <div className="mt-8">
+              <p className="text-white font-medium mb-4">Subscribe to our newsletter</p>
+              <div className="flex gap-2">
+                <Input 
+                  type="email" 
+                  placeholder="Your email" 
+                  className="bg-white/5 border-white/10 text-white placeholder:text-white/50"
+                />
+                <Button variant="default">Subscribe</Button>
+              </div>
+            </div>
+            
+            <div className="flex space-x-4 mt-8">
               <SocialLink href="#" icon={Twitter} label="Twitter" />
               <SocialLink href="#" icon={Linkedin} label="LinkedIn" />
               <SocialLink href="#" icon={Facebook} label="Facebook" />
@@ -25,7 +40,7 @@ export function Footer() {
           </div>
           
           <div className="md:col-span-7 lg:col-span-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
               <FooterLinkGroup title="Quick Links">
                 <FooterLink href="/">Home</FooterLink>
                 <FooterLink href="/about">About</FooterLink>
@@ -48,20 +63,30 @@ export function Footer() {
                 <FooterLink href="/press">Press</FooterLink>
               </FooterLinkGroup>
               
-              <FooterLinkGroup title="Legal">
-                <FooterLink href="/terms">Terms of Service</FooterLink>
-                <FooterLink href="/privacy">Privacy Policy</FooterLink>
-                <FooterLink href="/security">Security</FooterLink>
-                <FooterLink href="/cookies">Cookie Policy</FooterLink>
+              <FooterLinkGroup title="Contact">
+                <li className="flex items-start gap-2 text-light-gray/70 hover:text-bright-orange transition-colors">
+                  <Mail size={16} className="shrink-0 mt-1" />
+                  <a href="mailto:info@insighthub.com">info@insighthub.com</a>
+                </li>
+                <li className="flex items-start gap-2 text-light-gray/70 hover:text-bright-orange transition-colors">
+                  <Phone size={16} className="shrink-0 mt-1" />
+                  <a href="tel:+12345678900">+1 (234) 567-8900</a>
+                </li>
+                <li className="flex items-start gap-2 text-light-gray/70">
+                  <MapPin size={16} className="shrink-0 mt-1" />
+                  <span>123 AI Street, Silicon Valley, CA 94043</span>
+                </li>
               </FooterLinkGroup>
             </div>
           </div>
         </div>
         
-        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-light-gray/70 text-sm">
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-light-gray/70 text-sm">
           <p>© {currentYear} InsightHub. All rights reserved.</p>
-          <div className="mt-4 md:mt-0">
-            Made with ❤️ for learners worldwide
+          <div className="flex gap-6 mt-4 md:mt-0">
+            <Link to="/terms" className="hover:text-bright-orange transition-colors">Terms of Service</Link>
+            <Link to="/privacy" className="hover:text-bright-orange transition-colors">Privacy Policy</Link>
+            <Link to="/cookies" className="hover:text-bright-orange transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>
@@ -73,10 +98,10 @@ function SocialLink({ href, icon: Icon, label }: { href: string; icon: React.Com
   return (
     <a 
       href={href}
-      className="w-8 h-8 flex items-center justify-center rounded-full bg-white/5 text-light-gray hover:bg-bright-orange/20 hover:text-bright-orange transition-colors"
+      className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-light-gray hover:bg-bright-orange/20 hover:text-bright-orange transition-colors"
       aria-label={label}
     >
-      <Icon size={16} />
+      <Icon size={18} />
     </a>
   )
 }
