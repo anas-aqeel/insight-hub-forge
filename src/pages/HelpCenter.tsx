@@ -1,15 +1,23 @@
+
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { 
   HelpCircle, Search, MessageSquare, FileText, Mail, 
   Phone, Users, Settings, ArrowRight, Check, Clock,
-  Shield, CreditCard, ThumbsUp
+  Shield, CreditCard, ThumbsUp, ChevronDown, ChevronUp
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card-custom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button-custom";
+import { useState } from "react";
 
 export default function HelpCenter() {
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+
+  const toggleFaq = (index: number) => {
+    setExpandedFaq(expandedFaq === index ? null : index);
+  };
+
   return (
     <PageLayout>
       <PageHeader 
@@ -53,26 +61,24 @@ export default function HelpCenter() {
             {supportCategories.map((category, index) => (
               <Card key={index} className="h-full animate-slide-in bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30 hover:border-bright-orange transition-all duration-300" style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
+                  <div className="mb-4">
                     <div className="inline-flex items-center justify-center p-3 rounded-full bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 border border-vibrant-pink/30">
                       <category.icon className="h-6 w-6 text-bright-orange" />
                     </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-2 text-white">{category.title}</h3>
-                      <p className="text-light-gray mb-4">{category.description}</p>
-                      <ul className="space-y-2 mb-4">
-                        {category.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start gap-2">
-                            <Check size={16} className="text-bright-orange mt-1 shrink-0" />
-                            <span className="text-light-gray text-sm">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      <Button variant="outline" className="w-full flex items-center justify-center">
-                        Explore <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </div>
                   </div>
+                  <h3 className="text-xl font-semibold mb-3 text-white">{category.title}</h3>
+                  <p className="text-light-gray mb-4">{category.description}</p>
+                  <ul className="space-y-2 mb-4">
+                    {category.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <Check size={16} className="text-bright-orange mt-1 shrink-0" />
+                        <span className="text-light-gray text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button variant="outline" className="w-full flex items-center justify-center">
+                    Explore <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
                 </CardContent>
               </Card>
             ))}
@@ -80,17 +86,33 @@ export default function HelpCenter() {
           
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold mb-8 text-center text-white animate-slide-in-delay-3">Frequently Asked Questions</h2>
-            <div className="space-y-6">
+            <div className="space-y-4">
               {faqs.map((faq, index) => (
-                <Card key={index} className="animate-slide-in bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30" style={{ animationDelay: `${index * 0.1}s` }}>
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold mb-3 text-white flex items-center gap-2">
+                <div 
+                  key={index} 
+                  className={`animate-slide-in bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border border-vibrant-pink/30 rounded-lg overflow-hidden transition-all duration-300 ${expandedFaq === index ? 'border-bright-orange/50' : ''}`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div 
+                    className="p-4 flex justify-between items-center cursor-pointer"
+                    onClick={() => toggleFaq(index)}
+                  >
+                    <h3 className="text-xl font-semibold text-white flex items-center gap-2">
                       <div className="w-6 h-6 rounded-full bg-gradient-to-br from-vibrant-pink/30 to-bright-orange/30 flex items-center justify-center text-bright-orange">Q</div>
                       {faq.question}
                     </h3>
-                    <p className="text-light-gray pl-8">{faq.answer}</p>
-                  </CardContent>
-                </Card>
+                    <div className="text-bright-orange">
+                      {expandedFaq === index ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                    </div>
+                  </div>
+                  <div 
+                    className={`overflow-hidden transition-all duration-300 ${expandedFaq === index ? 'max-h-96' : 'max-h-0'}`}
+                  >
+                    <div className="p-4 pt-0 pl-8 ml-8 border-t border-vibrant-pink/20">
+                      <p className="text-light-gray">{faq.answer}</p>
+                    </div>
+                  </div>
+                </div>
               ))}
             </div>
             

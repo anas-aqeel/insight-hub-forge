@@ -12,10 +12,11 @@ export function HeroSection() {
 
   function calculateTimeLeft() {
     // Set the launch date to 7 days from now
-    const launchDate = new Date()
-    launchDate.setDate(launchDate.getDate() + 7)
+    const targetDate = new Date();
+    // Add 7 days to current date
+    targetDate.setDate(targetDate.getDate() + 7);
     
-    const difference = launchDate.getTime() - new Date().getTime()
+    const difference = targetDate.getTime() - new Date().getTime();
     
     return {
       days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -27,18 +28,18 @@ export function HeroSection() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft())
-    }, 1000)
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
 
-    return () => clearInterval(timer)
-  }, [])
+    return () => clearInterval(timer);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // Handle the email submission
-    console.log("Email submitted:", email)
+    console.log("Email submitted:", email);
     // Reset the form
-    setEmail("")
+    setEmail("");
   }
 
   return (
@@ -77,7 +78,7 @@ export function HeroSection() {
           <form onSubmit={handleSubmit} className="pt-2">
             <div className="flex flex-col sm:flex-row gap-2 w-full">
               <div className="relative flex-grow">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-bright-orange" />
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-bright-orange" />
                 <Input 
                   type="email" 
                   placeholder="Enter your email" 
@@ -87,7 +88,7 @@ export function HeroSection() {
                   required
                 />
               </div>
-              <Button type="submit" size="lg" className="text-base font-medium">
+              <Button type="submit" size="lg" className="text-base font-medium bg-gradient-to-r from-vibrant-pink to-bright-orange text-white hover:opacity-90 transition-opacity">
                 Join Waitlist
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
@@ -95,7 +96,7 @@ export function HeroSection() {
           </form>
           
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <Button asChild size="lg" className="text-base font-medium">
+            <Button asChild size="lg" className="text-base font-medium bg-gradient-to-r from-vibrant-pink to-bright-orange text-white hover:opacity-90 transition-opacity">
               <Link to="/signup">
                 Get Started
                 <ArrowRight className="ml-2 h-5 w-5" />

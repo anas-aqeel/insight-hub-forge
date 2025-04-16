@@ -26,7 +26,7 @@ export function Footer() {
                   placeholder="Your email" 
                   className="bg-dark-gray/50 border-vibrant-pink/30 text-white placeholder:text-white/50"
                 />
-                <Button variant="default">Subscribe</Button>
+                <Button variant="default" className="bg-gradient-to-r from-vibrant-pink to-bright-orange text-white hover:opacity-90 transition-opacity">Subscribe</Button>
               </div>
             </div>
             
@@ -40,13 +40,13 @@ export function Footer() {
           </div>
           
           <div className="md:col-span-7 lg:col-span-8">
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
               <FooterLinkGroup title="Quick Links">
                 <FooterLink href="/">Home</FooterLink>
-                <FooterLink href="/#about">About</FooterLink>
-                <FooterLink href="/#features">Features</FooterLink>
-                <FooterLink href="/#pricing">Pricing</FooterLink>
-                <FooterLink href="/#faq">FAQ</FooterLink>
+                <FooterLink href="/about">About</FooterLink>
+                <FooterLink href="/features">Features</FooterLink>
+                <FooterLink href="/pricing">Pricing</FooterLink>
+                <FooterLink href="/contact">Contact</FooterLink>
               </FooterLinkGroup>
               
               <FooterLinkGroup title="Resources">
@@ -54,6 +54,7 @@ export function Footer() {
                 <FooterLink href="/tutorials">Tutorials</FooterLink>
                 <FooterLink href="/documentation">Documentation</FooterLink>
                 <FooterLink href="/webinars">Webinars</FooterLink>
+                <FooterLink href="/blog">Blog</FooterLink>
               </FooterLinkGroup>
               
               <FooterLinkGroup title="Company">
@@ -61,6 +62,7 @@ export function Footer() {
                 <FooterLink href="/careers">Careers</FooterLink>
                 <FooterLink href="/contact">Contact Us</FooterLink>
                 <FooterLink href="/press">Press</FooterLink>
+                <FooterLink href="/demo">Demo</FooterLink>
               </FooterLinkGroup>
               
               <FooterLinkGroup title="Contact">

@@ -3,7 +3,6 @@ import { Logo } from "@/components/Logo";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Link } from "react-router-dom";
 import { CountdownTimer } from "@/components/CountdownTimer";
 
 export default function SignupPage() {
@@ -44,18 +43,9 @@ export default function SignupPage() {
           </div>
         </CardContent>
         <CardFooter>
-          <Button className="w-full text-white">Join Waitlist</Button>
+          <Button className="w-full bg-gradient-to-r from-vibrant-pink to-bright-orange text-white hover:opacity-90 transition-opacity">Join Waitlist</Button>
         </CardFooter>
       </Card>
-      
-      <div className="mt-8 text-center">
-        <p className="text-light-gray">
-          Already have an account?{" "}
-          <Link to="/login" className="text-bright-orange hover:underline">
-            Log in
-          </Link>
-        </p>
-      </div>
     </div>
   );
 }
