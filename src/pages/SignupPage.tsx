@@ -4,8 +4,27 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { CountdownTimer } from "@/components/CountdownTimer";
+import { useState } from "react";
+import { toast } from "sonner";
 
 export default function SignupPage() {
+  const [email, setEmail] = useState("");
+  const [role, setRole] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Simulate API call
+    setTimeout(() => {
+      toast.success("You've been added to our waitlist! Check your email for confirmation.");
+      setIsSubmitting(false);
+      setEmail("");
+      setRole("");
+    }, 1500);
+  };
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center py-12 px-4">
       <div className="absolute inset-0 bg-gradient-primary -z-10" />
@@ -19,7 +38,7 @@ export default function SignupPage() {
         <CountdownTimer />
       </div>
       
-      <Card className="w-full max-w-md animate-scale-in bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30">
+      <Card className="w-full max-w-md animate-scale-in bg-gradient-to-br from-[#1d0c0c]/90 to-[#230606]/80 border-[#6e0415]/70">
         <CardHeader className="space-y-1 text-center">
           <CardTitle className="text-3xl font-bold text-white">Join the Waitlist</CardTitle>
           <CardDescription className="text-light-gray">
@@ -27,24 +46,36 @@ export default function SignupPage() {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <Input
-              type="email"
-              placeholder="Email address"
-              className="bg-white/5 border-white/10 text-white placeholder:text-white/50"
-            />
-          </div>
-          <div className="space-y-2">
-            <Input
-              type="text"
-              placeholder="Your role (Student, Educator, etc.)"
-              className="bg-white/5 border-white/10 text-white placeholder:text-white/50"
-            />
-          </div>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Input
+                type="email"
+                placeholder="Email address"
+                className="bg-[#1d0c0c]/50 border-[#6e0415]/50 text-white placeholder:text-white/50 focus:ring-[#ff2100]/30 focus:border-[#ff2100]/50"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Input
+                type="text"
+                placeholder="Your role (Student, Educator, etc.)"
+                className="bg-[#1d0c0c]/50 border-[#6e0415]/50 text-white placeholder:text-white/50 focus:ring-[#ff2100]/30 focus:border-[#ff2100]/50"
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                required
+              />
+            </div>
+            <Button 
+              type="submit" 
+              className="w-full bg-gradient-to-r from-[#6e0415] to-[#ff2100] text-white hover:opacity-90 transition-opacity"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Processing..." : "Join Waitlist"}
+            </Button>
+          </form>
         </CardContent>
-        <CardFooter>
-          <Button className="w-full bg-gradient-to-r from-vibrant-pink to-bright-orange text-white hover:opacity-90 transition-opacity">Join Waitlist</Button>
-        </CardFooter>
       </Card>
     </div>
   );

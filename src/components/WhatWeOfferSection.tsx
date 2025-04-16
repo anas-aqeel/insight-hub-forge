@@ -1,4 +1,3 @@
-
 import { Award, Clock, Sparkles, Layers, Check } from "lucide-react"
 import { Button } from "@/components/ui/button-custom"
 
@@ -23,34 +22,32 @@ export function WhatWeOfferSection() {
           {offerItems.map((item, index) => (
             <div 
               key={index} 
-              className={`p-8 border border-vibrant-pink/30 rounded-xl bg-dark-gray/30 backdrop-blur-md hover:border-vibrant-pink/50 transition-all duration-300 animate-slide-in-delay-${index % 2 + 1}`}
+              className={`p-8 border border-vibrant-pink/30 rounded-xl bg-dark-gray/30 backdrop-blur-md hover:border-vibrant-pink/50 transition-all duration-300 animate-slide-in-delay-${index % 2 + 1} flex flex-col h-full`}
             >
-              <div className="flex flex-col h-full">
-                <div>
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 rounded-lg border border-vibrant-pink/30 shrink-0">
-                      <item.icon className="h-8 w-8 text-bright-orange" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-white">{item.title}</h3>
+              <div className="mb-6">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 rounded-lg border border-vibrant-pink/30 shrink-0">
+                    <item.icon className="h-8 w-8 text-bright-orange" />
                   </div>
-                  
-                  <p className="text-light-gray mb-6">{item.description}</p>
-                  
-                  <ul className="space-y-3 mb-8">
-                    {item.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-3">
-                        <Check className="h-5 w-5 text-bright-orange shrink-0 mt-0.5" />
-                        <span className="text-white">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <h3 className="text-2xl font-bold text-white">{item.title}</h3>
                 </div>
                 
-                <div className="mt-auto">
-                  <Button variant="outline" className="w-full">
-                    Learn more
-                  </Button>
-                </div>
+                <p className="text-light-gray mb-6">{item.description}</p>
+                
+                <ul className="space-y-3 mb-8">
+                  {item.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start gap-3">
+                      <Check className="h-5 w-5 text-bright-orange shrink-0 mt-0.5" />
+                      <span className="text-white">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <div className="mt-auto">
+                <Button variant="outline" className="w-full">
+                  Learn more
+                </Button>
               </div>
             </div>
           ))}

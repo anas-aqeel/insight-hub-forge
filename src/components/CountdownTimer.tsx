@@ -1,15 +1,8 @@
 
 import { useEffect, useState } from "react";
 
-interface TimeLeft {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-}
-
 export function CountdownTimer() {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>({
+  const [timeLeft, setTimeLeft] = useState({
     days: 7,
     hours: 0,
     minutes: 0,
@@ -17,55 +10,60 @@ export function CountdownTimer() {
   });
 
   useEffect(() => {
-    // Set the target date to 7 days from now
-    const targetDate = new Date();
-    targetDate.setDate(targetDate.getDate() + 7);
+    // Set the end date to 7 days from now
+    const endDate = new Date();
+    endDate.setDate(endDate.getDate() + 7);
     
-    const calculateTimeLeft = () => {
-      const difference = targetDate.getTime() - new Date().getTime();
+    const timer = setInterval(() => {
+      const now = new Date();
+      const difference = endDate.getTime() - now.getTime();
       
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60)
-        });
+      if (difference <= 0) {
+        clearInterval(timer);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
       }
-    };
+      
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+      
+      setTimeLeft({ days, hours, minutes, seconds });
+    }, 1000);
     
-    // Calculate initially
-    calculateTimeLeft();
-    
-    // Update every second
-    const timer = setInterval(calculateTimeLeft, 1000);
-    
-    // Clear timer on unmount
     return () => clearInterval(timer);
   }, []);
-  
-  return (
-    <div className="flex justify-center space-x-4 md:space-x-6">
-      <TimeUnit value={timeLeft.days} label="Days" />
-      <TimeUnit value={timeLeft.hours} label="Hours" />
-      <TimeUnit value={timeLeft.minutes} label="Minutes" />
-      <TimeUnit value={timeLeft.seconds} label="Seconds" />
-    </div>
-  );
-}
 
-interface TimeUnitProps {
-  value: number;
-  label: string;
-}
-
-function TimeUnit({ value, label }: TimeUnitProps) {
   return (
-    <div className="flex flex-col items-center">
-      <div className="w-16 h-16 md:w-20 md:h-20 rounded-lg bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 border border-vibrant-pink/30 flex items-center justify-center mb-2">
-        <span className="text-2xl md:text-3xl font-bold text-white">{value.toString().padStart(2, '0')}</span>
+    <div className="flex items-center justify-center gap-4 mb-4">
+      <div className="flex flex-col items-center">
+        <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-br from-vibrant-pink to-bright-orange bg-clip-text text-transparent">
+          {timeLeft.days}
+        </div>
+        <div className="text-xs text-light-gray">Days</div>
       </div>
-      <span className="text-xs md:text-sm text-light-gray">{label}</span>
+      <div className="text-white text-2xl">:</div>
+      <div className="flex flex-col items-center">
+        <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-br from-vibrant-pink to-bright-orange bg-clip-text text-transparent">
+          {timeLeft.hours.toString().padStart(2, '0')}
+        </div>
+        <div className="text-xs text-light-gray">Hours</div>
+      </div>
+      <div className="text-white text-2xl">:</div>
+      <div className="flex flex-col items-center">
+        <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-br from-vibrant-pink to-bright-orange bg-clip-text text-transparent">
+          {timeLeft.minutes.toString().padStart(2, '0')}
+        </div>
+        <div className="text-xs text-light-gray">Minutes</div>
+      </div>
+      <div className="text-white text-2xl">:</div>
+      <div className="flex flex-col items-center">
+        <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-br from-vibrant-pink to-bright-orange bg-clip-text text-transparent">
+          {timeLeft.seconds.toString().padStart(2, '0')}
+        </div>
+        <div className="text-xs text-light-gray">Seconds</div>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button-custom"
 import { Logo } from "./Logo"
@@ -100,7 +99,7 @@ export function Navbar() {
                       <li className="col-span-2 mt-2">
                         <Link 
                           to="/features"
-                          className="w-full inline-block text-center p-2 px-4 rounded-md bg-gradient-to-r from-vibrant-pink/20 to-bright-orange/20 border border-vibrant-pink/30 text-white hover:bg-gradient-to-r hover:from-vibrant-pink/30 hover:to-bright-orange/30 transition-colors"
+                          className="w-full inline-block text-center p-2 px-4 rounded-md bg-gradient-to-r from-[#6e0415]/50 to-[#ff2100]/50 border border-[#6e0415] text-white hover:bg-gradient-to-r hover:from-[#6e0415]/70 hover:to-[#ff2100]/70 transition-colors"
                         >
                           View All Features
                         </Link>
@@ -126,7 +125,7 @@ export function Navbar() {
                     Resources
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-3 p-4">
+                    <ul className="grid w-[200px] gap-3 p-4 bg-[#1d0c0c] border border-[#6e0415]">
                       <ResourceNavItem
                         title="Help Center"
                         href="/help-center"
@@ -161,9 +160,6 @@ export function Navbar() {
           </div>
           
           <div className="flex items-center space-x-4">
-            <Button asChild variant="ghost" className="text-white hover:text-bright-orange">
-              <Link to="/login">Log In</Link>
-            </Button>
             <Button asChild variant="outline">
               <Link to="/signup">Sign Up</Link>
             </Button>
@@ -308,9 +304,6 @@ export function Navbar() {
             </Link>
             
             <div className="flex flex-col space-y-3 pt-4 border-t border-vibrant-pink/20">
-              <Button asChild variant="ghost" className="w-full justify-start text-white hover:text-bright-orange">
-                <Link to="/login" onClick={() => setMobileMenuOpen(false)}>Log In</Link>
-              </Button>
               <Button asChild variant="outline" className="w-full">
                 <Link to="/signup" onClick={() => setMobileMenuOpen(false)}>Sign Up</Link>
               </Button>
@@ -328,7 +321,7 @@ const FeatureNavItem = ({ title, href, description }: { title: string; href: str
       <NavigationMenuLink asChild>
         <Link
           to={href}
-          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gradient-to-r hover:from-vibrant-pink/10 hover:to-bright-orange/10 hover:text-bright-orange"
+          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gradient-to-r hover:from-[#6e0415]/20 hover:to-[#ff2100]/20 hover:text-[#ff2100]"
         >
           <div className="text-sm font-medium leading-none text-white">{title}</div>
           <p className="line-clamp-2 text-sm leading-snug text-light-gray">
@@ -346,7 +339,7 @@ const ResourceNavItem = ({ title, href }: { title: string; href: string }) => {
       <NavigationMenuLink asChild>
         <Link
           to={href}
-          className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-gradient-to-r hover:from-vibrant-pink/10 hover:to-bright-orange/10 hover:text-bright-orange text-white"
+          className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-gradient-to-r hover:from-[#6e0415]/20 hover:to-[#ff2100]/20 hover:text-[#ff2100] text-white"
         >
           {title}
         </Link>

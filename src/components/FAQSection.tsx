@@ -1,88 +1,73 @@
 
-import { ChevronDown, HelpCircle } from "lucide-react"
-import { 
-  Accordion, 
-  AccordionContent, 
-  AccordionItem, 
-  AccordionTrigger 
-} from "@/components/ui/accordion-custom"
-import { Card, CardContent } from "@/components/ui/card-custom"
-
-const faqs = [
-  {
-    question: "What is InsightHub?",
-    answer: "InsightHub is an AI-powered platform designed to help students learn more efficiently with personalized tools, content discovery, and productivity features. Our platform combines cutting-edge AI technology with proven learning methodologies to create a comprehensive learning ecosystem."
-  },
-  {
-    question: "Who can use InsightHub?",
-    answer: "InsightHub is perfect for university/college students, high school students, self-learners, and STEM professionals. Anyone looking to enhance their learning experience with AI-powered tools can benefit from our platform."
-  },
-  {
-    question: "Is there a free trial?",
-    answer: "Yes, we offer a free plan with limited features for new users to explore. You can upgrade to a paid plan anytime to access more advanced features and remove usage limitations."
-  },
-  {
-    question: "How does the AI tutor work?",
-    answer: "The AI tutor provides personalized study plans, generates summaries, flashcards, and helps with answering questions based on your current study material. It learns from your interactions to provide increasingly relevant assistance tailored to your learning style."
-  },
-  {
-    question: "Can I cancel my subscription anytime?",
-    answer: "Yes, you can cancel your subscription at any time. Your access will continue until the end of your current billing period, and you won't be charged again."
-  },
-  {
-    question: "Is my data secure?",
-    answer: "Yes, we take data security very seriously. We use industry-standard encryption and security practices to protect your personal information and learning data. We never sell your data to third parties."
-  },
-  {
-    question: "Can I use InsightHub on multiple devices?",
-    answer: "Yes, InsightHub is available on web browsers, and you can access your account from any device. We also have mobile apps for iOS and Android devices, allowing you to learn on the go."
-  },
-  {
-    question: "How do I get started?",
-    answer: "Simply sign up for a free account, choose your areas of interest, and start exploring the platform. You can upgrade to a paid plan anytime to access more features."
-  }
-]
+import { HelpCircle } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion-custom";
 
 export function FAQSection() {
   return (
-    <section id="faq" className="py-24 relative">
-      <div className="absolute bottom-0 left-1/3 w-64 h-64 bg-vibrant-pink/10 rounded-full blur-3xl -z-10"></div>
-      
+    <section id="faq" className="py-24 bg-gradient-to-br from-[#0a0a0a] to-[#151515] border-t border-vibrant-pink/20">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16 animate-slide-in">
-          <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 rounded-full mb-4">
+          <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 rounded-full mb-4 border border-vibrant-pink/30">
             <HelpCircle size={32} className="text-bright-orange" />
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Frequently Asked Questions</h2>
           <p className="text-xl text-light-gray">
-            Got questions? We've got answers. If you don't see what you're looking for, reach out to our support team.
+            Find answers to common questions about InsightHub and how it can transform your learning experience.
           </p>
         </div>
         
-        <Card className="max-w-4xl mx-auto animate-slide-in-delay-1">
-          <CardContent className="p-8">
-            <Accordion type="single" collapsible className="space-y-4">
-              {faqs.map((faq, index) => (
-                <AccordionItem 
-                  key={index} 
-                  value={`item-${index}`}
-                  className="border border-white/10 rounded-lg overflow-hidden bg-black/20 backdrop-blur-sm"
-                >
-                  <AccordionTrigger className="px-6 py-4 text-white hover:text-bright-orange transition-colors text-left">
-                    <div className="flex justify-between items-center w-full">
-                      <span className="text-lg font-medium">{faq.question}</span>
-                      <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200" />
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="px-6 pb-6 text-light-gray">
-                    <p className="text-base leading-relaxed">{faq.answer}</p>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </CardContent>
-        </Card>
+        <div className="max-w-3xl mx-auto">
+          <Accordion type="single" collapsible className="w-full space-y-4">
+            {faqItems.map((item, index) => (
+              <AccordionItem 
+                key={index} 
+                value={`item-${index}`} 
+                className="border border-vibrant-pink/30 rounded-lg backdrop-blur-sm bg-dark-gray/30 px-6 overflow-hidden animate-slide-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <AccordionTrigger className="text-white hover:text-bright-orange py-4">
+                  {item.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-light-gray pb-4">
+                  {item.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
       </div>
     </section>
-  )
+  );
 }
+
+const faqItems = [
+  {
+    question: "What is InsightHub?",
+    answer: "InsightHub is an AI-powered learning platform designed to help students maximize their learning potential through personalized study plans, adaptive recommendations, and cutting-edge technology. Our platform combines smart learning tools with analytics to provide an optimal learning experience."
+  },
+  {
+    question: "How does the AI tutor work?",
+    answer: "Our AI tutor uses advanced natural language processing to understand your questions and provide personalized explanations. It adapts to your learning style and knowledge gaps, offering clear, concise answers and suggesting additional resources to deepen your understanding."
+  },
+  {
+    question: "Is InsightHub suitable for all subjects?",
+    answer: "Yes! InsightHub supports learning across various disciplines including STEM (Science, Technology, Engineering, Mathematics), Humanities, Business, Languages, and more. Our AI system is trained on diverse academic content to provide assistance regardless of your field of study."
+  },
+  {
+    question: "How much does InsightHub cost?",
+    answer: "InsightHub offers flexible pricing plans designed to accommodate different needs and budgets. We have student plans, educator plans, and institutional licenses. Visit our Pricing page for detailed information on our current rates and special offers."
+  },
+  {
+    question: "Can I access InsightHub on mobile devices?",
+    answer: "Absolutely! InsightHub is fully responsive and accessible across all devices including smartphones and tablets. We also offer dedicated mobile apps for iOS and Android that provide an optimized mobile experience with offline capabilities."
+  },
+  {
+    question: "How is my data protected on InsightHub?",
+    answer: "We take data privacy seriously. InsightHub employs industry-standard encryption protocols to secure your information. We never share your personal data with third parties without your consent, and all study data is securely stored. For complete details, please review our Privacy Policy."
+  }
+];
