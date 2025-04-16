@@ -26,12 +26,12 @@ export function HeroSection() {
   }
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft())
     }, 1000)
 
-    return () => clearTimeout(timer)
-  })
+    return () => clearInterval(timer)
+  }, [])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()

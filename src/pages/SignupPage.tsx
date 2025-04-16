@@ -20,9 +20,9 @@ export default function SignupPage() {
         <CountdownTimer />
       </div>
       
-      <Card className="w-full max-w-md animate-scale-in">
+      <Card className="w-full max-w-md animate-scale-in bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30">
         <CardHeader className="space-y-1 text-center">
-          <CardTitle className="text-3xl font-bold">Join the Waitlist</CardTitle>
+          <CardTitle className="text-3xl font-bold text-white">Join the Waitlist</CardTitle>
           <CardDescription className="text-light-gray">
             Sign up to get early access to InsightHub, the AI-powered learning platform.
           </CardDescription>

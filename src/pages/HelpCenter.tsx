@@ -1,7 +1,10 @@
-
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
-import { HelpCircle, Search, MessageSquare, FileText, Mail, Phone } from "lucide-react";
+import { 
+  HelpCircle, Search, MessageSquare, FileText, Mail, 
+  Phone, Users, Settings, ArrowRight, Check, Clock,
+  Shield, CreditCard, ThumbsUp
+} from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card-custom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button-custom";
@@ -28,17 +31,47 @@ export default function HelpCenter() {
             </div>
           </div>
           
+          <div className="mb-16 animate-slide-in-delay-1">
+            <h2 className="text-2xl font-bold mb-6 text-center text-white">Popular Help Topics</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+              {popularTopics.map((topic, index) => (
+                <div 
+                  key={index} 
+                  className="bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border border-vibrant-pink/30 rounded-lg p-4 hover:border-bright-orange transition-all duration-300"
+                >
+                  <div className="flex items-center gap-3">
+                    <topic.icon size={20} className="text-bright-orange" />
+                    <span className="text-white font-medium">{topic.title}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <h2 className="text-2xl font-bold mb-6 text-center text-white animate-slide-in-delay-2">How Can We Help You?</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {supportCategories.map((category, index) => (
-              <Card key={index} className="h-full animate-slide-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={index} className="h-full animate-slide-in bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30 hover:border-bright-orange transition-all duration-300" style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardContent className="p-6">
-                  <div className="flex flex-col items-center text-center p-4">
-                    <div className="inline-flex items-center justify-center p-3 rounded-full bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 border border-vibrant-pink/30 mb-4">
+                  <div className="flex items-start gap-4">
+                    <div className="inline-flex items-center justify-center p-3 rounded-full bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 border border-vibrant-pink/30">
                       <category.icon className="h-6 w-6 text-bright-orange" />
                     </div>
-                    <h3 className="text-xl font-semibold mb-2 text-white">{category.title}</h3>
-                    <p className="text-light-gray mb-4">{category.description}</p>
-                    <Button variant="outline" className="w-full">Explore</Button>
+                    <div>
+                      <h3 className="text-xl font-semibold mb-2 text-white">{category.title}</h3>
+                      <p className="text-light-gray mb-4">{category.description}</p>
+                      <ul className="space-y-2 mb-4">
+                        {category.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <Check size={16} className="text-bright-orange mt-1 shrink-0" />
+                            <span className="text-light-gray text-sm">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <Button variant="outline" className="w-full flex items-center justify-center">
+                        Explore <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -46,13 +79,16 @@ export default function HelpCenter() {
           </div>
           
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8 text-center text-white">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-bold mb-8 text-center text-white animate-slide-in-delay-3">Frequently Asked Questions</h2>
             <div className="space-y-6">
               {faqs.map((faq, index) => (
-                <Card key={index} className="animate-slide-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                <Card key={index} className="animate-slide-in bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30" style={{ animationDelay: `${index * 0.1}s` }}>
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold mb-2 text-white">{faq.question}</h3>
-                    <p className="text-light-gray">{faq.answer}</p>
+                    <h3 className="text-xl font-semibold mb-3 text-white flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-vibrant-pink/30 to-bright-orange/30 flex items-center justify-center text-bright-orange">Q</div>
+                      {faq.question}
+                    </h3>
+                    <p className="text-light-gray pl-8">{faq.answer}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -62,42 +98,119 @@ export default function HelpCenter() {
               <Button>View All FAQs</Button>
             </div>
           </div>
+          
+          <div className="mt-20 bg-gradient-to-br from-vibrant-pink/10 to-bright-orange/10 border border-vibrant-pink/20 rounded-xl p-8 animate-slide-in-delay-4">
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-bold text-white mb-2">Still Need Help?</h3>
+              <p className="text-light-gray max-w-2xl mx-auto">Our support team is available to assist you with any questions or issues you may have.</p>
+            </div>
+            <div className="flex flex-col md:flex-row gap-6 justify-center">
+              <div className="flex items-center gap-3 bg-dark-gray/50 rounded-lg px-5 py-4 border border-vibrant-pink/20">
+                <Mail size={20} className="text-bright-orange" />
+                <div>
+                  <div className="text-white font-medium">Email Support</div>
+                  <div className="text-sm text-light-gray">support@insighthub.com</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 bg-dark-gray/50 rounded-lg px-5 py-4 border border-vibrant-pink/20">
+                <Phone size={20} className="text-bright-orange" />
+                <div>
+                  <div className="text-white font-medium">Phone Support</div>
+                  <div className="text-sm text-light-gray">+1 (800) 123-4567</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 bg-dark-gray/50 rounded-lg px-5 py-4 border border-vibrant-pink/20">
+                <MessageSquare size={20} className="text-bright-orange" />
+                <div>
+                  <div className="text-white font-medium">Live Chat</div>
+                  <div className="text-sm text-light-gray">Available 24/7</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </PageLayout>
   );
 }
 
+const popularTopics = [
+  { icon: Settings, title: "Account Settings" },
+  { icon: CreditCard, title: "Billing & Subscriptions" },
+  { icon: Users, title: "Group Study" },
+  { icon: Shield, title: "Privacy & Security" },
+  { icon: ThumbsUp, title: "Getting Started" },
+  { icon: MessageSquare, title: "AI Tutor Help" },
+  { icon: Clock, title: "Study Timer" },
+  { icon: FileText, title: "Content Creation" }
+];
+
 const supportCategories = [
   {
     icon: MessageSquare,
     title: "Live Chat Support",
-    description: "Chat with our support team for immediate assistance with your questions."
+    description: "Chat with our support team for immediate assistance with your questions.",
+    features: [
+      "24/7 availability",
+      "Quick response times",
+      "Screen sharing capability",
+      "Chat transcript available"
+    ]
   },
   {
     icon: FileText,
     title: "Knowledge Base",
-    description: "Browse our extensive collection of articles, guides, and tutorials."
+    description: "Browse our extensive collection of articles, guides, and tutorials.",
+    features: [
+      "Searchable articles",
+      "Step-by-step guides",
+      "Video tutorials",
+      "Regularly updated content"
+    ]
   },
   {
     icon: Mail,
     title: "Email Support",
-    description: "Contact our support team via email for more complex issues."
+    description: "Contact our support team via email for more complex issues.",
+    features: [
+      "Detailed responses",
+      "File attachment support",
+      "Follow-up communications",
+      "Case tracking system"
+    ]
   },
   {
     icon: Phone,
     title: "Phone Support",
-    description: "Speak directly with a support representative for personalized help."
+    description: "Speak directly with a support representative for personalized help.",
+    features: [
+      "Available 9AM-6PM EST",
+      "Priority support for premium users",
+      "Expert technical assistance",
+      "Call-back option available"
+    ]
   },
   {
     icon: FileText,
     title: "Tutorials",
-    description: "Step-by-step tutorials to help you get the most out of InsightHub."
+    description: "Step-by-step tutorials to help you get the most out of InsightHub.",
+    features: [
+      "Video demonstrations",
+      "Written guides with screenshots",
+      "Interactive walkthroughs",
+      "Beginner to advanced topics"
+    ]
   },
   {
-    icon: HelpCircle,
+    icon: Users,
     title: "Community Forums",
-    description: "Connect with other users to find solutions and share experiences."
+    description: "Connect with other users to find solutions and share experiences.",
+    features: [
+      "User-to-user support",
+      "Share tips and tricks",
+      "Feature request discussions",
+      "Moderated by InsightHub team"
+    ]
   }
 ];
 

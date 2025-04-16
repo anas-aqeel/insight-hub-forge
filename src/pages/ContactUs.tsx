@@ -1,7 +1,7 @@
 
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
-import { MessageSquare, Mail, Phone, MapPin, Clock } from "lucide-react";
+import { MessageSquare, Mail, Phone, MapPin, Clock, Send } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card-custom";
 import { Button } from "@/components/ui/button-custom";
 import { Input } from "@/components/ui/input";
@@ -18,11 +18,14 @@ export default function ContactUs() {
       
       <section className="py-12">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="animate-slide-in">
-              <Card className="h-full">
+          <div className="grid md:grid-cols-12 gap-12">
+            <div className="md:col-span-7 animate-slide-in">
+              <Card className="h-full bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-6 text-white">Send Us a Message</h3>
+                  <h3 className="text-2xl font-bold mb-6 text-white flex items-center gap-2">
+                    <Send size={20} className="text-bright-orange" />
+                    Send Us a Message
+                  </h3>
                   <form className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
@@ -67,71 +70,60 @@ export default function ContactUs() {
               </Card>
             </div>
             
-            <div className="animate-slide-in-delay-1">
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold mb-6 text-white">Contact Information</h3>
-                <div className="space-y-6">
-                  <Card>
-                    <CardContent className="p-6">
-                      <div className="flex items-start gap-4">
-                        <div className="inline-flex items-center justify-center p-3 rounded-full bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 border border-vibrant-pink/30">
-                          <Mail className="h-6 w-6 text-bright-orange" />
-                        </div>
-                        <div>
-                          <h4 className="text-lg font-semibold text-white">Email</h4>
-                          <p className="text-light-gray">hello@insighthub.com</p>
-                          <p className="text-light-gray">support@insighthub.com</p>
-                        </div>
+            <div className="md:col-span-5 animate-slide-in-delay-1">
+              <Card className="h-full bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold mb-6 text-white flex items-center gap-2">
+                    <MessageSquare size={20} className="text-bright-orange" />
+                    Contact Information
+                  </h3>
+                  <div className="space-y-6">
+                    <div className="flex items-start gap-4 p-4 bg-gradient-to-br from-vibrant-pink/10 to-bright-orange/10 rounded-lg border border-vibrant-pink/20">
+                      <div className="inline-flex items-center justify-center p-3 rounded-full bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 border border-vibrant-pink/30">
+                        <Mail className="h-6 w-6 text-bright-orange" />
                       </div>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card>
-                    <CardContent className="p-6">
-                      <div className="flex items-start gap-4">
-                        <div className="inline-flex items-center justify-center p-3 rounded-full bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 border border-vibrant-pink/30">
-                          <Phone className="h-6 w-6 text-bright-orange" />
-                        </div>
-                        <div>
-                          <h4 className="text-lg font-semibold text-white">Phone</h4>
-                          <p className="text-light-gray">+1 (800) 123-4567</p>
-                          <p className="text-light-gray">Mon-Fri 9AM to 6PM EST</p>
-                        </div>
+                      <div>
+                        <h4 className="text-lg font-semibold text-white">Email</h4>
+                        <p className="text-light-gray">hello@insighthub.com</p>
+                        <p className="text-light-gray">support@insighthub.com</p>
                       </div>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card>
-                    <CardContent className="p-6">
-                      <div className="flex items-start gap-4">
-                        <div className="inline-flex items-center justify-center p-3 rounded-full bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 border border-vibrant-pink/30">
-                          <MapPin className="h-6 w-6 text-bright-orange" />
-                        </div>
-                        <div>
-                          <h4 className="text-lg font-semibold text-white">Address</h4>
-                          <p className="text-light-gray">123 Innovation Way</p>
-                          <p className="text-light-gray">San Francisco, CA 94107</p>
-                        </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-4 p-4 bg-gradient-to-br from-vibrant-pink/10 to-bright-orange/10 rounded-lg border border-vibrant-pink/20">
+                      <div className="inline-flex items-center justify-center p-3 rounded-full bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 border border-vibrant-pink/30">
+                        <Phone className="h-6 w-6 text-bright-orange" />
                       </div>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card>
-                    <CardContent className="p-6">
-                      <div className="flex items-start gap-4">
-                        <div className="inline-flex items-center justify-center p-3 rounded-full bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 border border-vibrant-pink/30">
-                          <Clock className="h-6 w-6 text-bright-orange" />
-                        </div>
-                        <div>
-                          <h4 className="text-lg font-semibold text-white">Hours</h4>
-                          <p className="text-light-gray">Monday - Friday: 9AM - 6PM EST</p>
-                          <p className="text-light-gray">Saturday - Sunday: Closed</p>
-                        </div>
+                      <div>
+                        <h4 className="text-lg font-semibold text-white">Phone</h4>
+                        <p className="text-light-gray">+1 (800) 123-4567</p>
+                        <p className="text-light-gray">Mon-Fri 9AM to 6PM EST</p>
                       </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-4 p-4 bg-gradient-to-br from-vibrant-pink/10 to-bright-orange/10 rounded-lg border border-vibrant-pink/20">
+                      <div className="inline-flex items-center justify-center p-3 rounded-full bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 border border-vibrant-pink/30">
+                        <MapPin className="h-6 w-6 text-bright-orange" />
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-semibold text-white">Address</h4>
+                        <p className="text-light-gray">123 Innovation Way</p>
+                        <p className="text-light-gray">San Francisco, CA 94107</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-4 p-4 bg-gradient-to-br from-vibrant-pink/10 to-bright-orange/10 rounded-lg border border-vibrant-pink/20">
+                      <div className="inline-flex items-center justify-center p-3 rounded-full bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 border border-vibrant-pink/30">
+                        <Clock className="h-6 w-6 text-bright-orange" />
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-semibold text-white">Hours</h4>
+                        <p className="text-light-gray">Monday - Friday: 9AM - 6PM EST</p>
+                        <p className="text-light-gray">Saturday - Sunday: Closed</p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
