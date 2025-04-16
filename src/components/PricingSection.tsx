@@ -13,7 +13,8 @@ const pricingPlans = [
       "Basic AI tools",
       "1 subject",
       "10 queries/day",
-      "Community access"
+      "Community access",
+      "Limited analytics"
     ],
     limitations: [
       "Limited AI capabilities",
@@ -31,9 +32,9 @@ const pricingPlans = [
     features: [
       "All Free features",
       "Unlimited tutoring",
+      "5 subjects",
       "Topic tracking",
-      "Custom feeds",
-      "Priority support"
+      "Custom feeds"
     ],
     popular: true,
     buttonText: "Start Free Trial",
@@ -64,7 +65,6 @@ const pricingPlans = [
       "Full AI stack",
       "Research mode",
       "Career mentor",
-      "Early access to features",
       "Dedicated support"
     ],
     buttonText: "Get Scholar Tier",

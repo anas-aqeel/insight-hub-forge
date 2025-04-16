@@ -25,7 +25,7 @@ export function WhatWeOfferSection() {
               key={index} 
               className={`p-8 border border-vibrant-pink/30 rounded-xl bg-dark-gray/30 backdrop-blur-md hover:border-vibrant-pink/50 transition-all duration-300 animate-slide-in-delay-${index % 2 + 1}`}
             >
-              <div className="flex flex-col md:flex-row md:items-start gap-6">
+              <div className="flex items-start gap-6">
                 <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 rounded-lg border border-vibrant-pink/30 shrink-0">
                   <item.icon className="h-8 w-8 text-bright-orange" />
                 </div>
@@ -35,8 +35,8 @@ export function WhatWeOfferSection() {
                   
                   <ul className="space-y-2 mt-4">
                     {item.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <Check className="h-5 w-5 text-bright-orange shrink-0" />
+                      <li key={idx} className="flex items-start gap-2">
+                        <Check className="h-5 w-5 text-bright-orange shrink-0 mt-0.5" />
                         <span className="text-white">{feature}</span>
                       </li>
                     ))}
@@ -76,7 +76,9 @@ const offerItems = [
     features: [
       "Custom study plans tailored to your goals",
       "Adaptive content recommendations",
-      "Learning style assessment"
+      "Learning style assessment",
+      "Progress tracking with actionable insights",
+      "Personalized study materials"
     ]
   },
   {
@@ -86,7 +88,9 @@ const offerItems = [
     features: [
       "Smart task prioritization",
       "Focus time optimization",
-      "Quick resource discovery"
+      "Quick resource discovery",
+      "Automated scheduling assistant",
+      "Deadline management"
     ]
   },
   {
@@ -96,7 +100,9 @@ const offerItems = [
     features: [
       "GPT-powered tutoring",
       "Neural network knowledge analysis",
-      "AI feedback systems"
+      "AI feedback systems",
+      "Voice-to-text note taking",
+      "Smart content summarization"
     ]
   },
   {
@@ -106,7 +112,9 @@ const offerItems = [
     features: [
       "Unified dashboard for all tools",
       "Synchronized learning data",
-      "Seamless workflow integration"
+      "Seamless workflow integration",
+      "Cross-platform accessibility",
+      "Integrated resource management"
     ]
   }
 ]

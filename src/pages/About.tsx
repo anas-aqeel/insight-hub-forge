@@ -1,14 +1,19 @@
 
-import { Footer } from "@/components/Footer";
-import { Navbar } from "@/components/Navbar";
+import { PageLayout } from "@/components/PageLayout";
+import { PageHeader } from "@/components/PageHeader";
+import { Info } from "lucide-react";
 
 export default function About() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      <main className="flex-1 container mx-auto px-4 py-16">
+    <PageLayout>
+      <PageHeader
+        icon={Info}
+        title="About InsightHub"
+        description="Our mission, vision, and story"
+      />
+      
+      <div className="container mx-auto px-4 py-12">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-white">About InsightHub</h1>
           <p className="text-light-gray text-lg mb-6">
             InsightHub is an AI-powered learning platform designed to transform how students learn, 
             discover knowledge, and stay productive. Our mission is to make education more personalized, 
@@ -47,8 +52,7 @@ export default function About() {
             Address: 123 Learning Lane, Knowledge City, 94105
           </p>
         </div>
-      </main>
-      <Footer />
-    </div>
+      </div>
+    </PageLayout>
   );
 }

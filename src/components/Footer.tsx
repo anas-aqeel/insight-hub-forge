@@ -43,14 +43,14 @@ export function Footer() {
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8">
               <FooterLinkGroup title="Quick Links">
                 <FooterLink href="/">Home</FooterLink>
-                <FooterLink href="#about">About</FooterLink>
-                <FooterLink href="#features">Features</FooterLink>
-                <FooterLink href="#pricing">Pricing</FooterLink>
-                <FooterLink href="#faq">FAQ</FooterLink>
+                <FooterLink href="/#about">About</FooterLink>
+                <FooterLink href="/#features">Features</FooterLink>
+                <FooterLink href="/#pricing">Pricing</FooterLink>
+                <FooterLink href="/#faq">FAQ</FooterLink>
               </FooterLinkGroup>
               
               <FooterLinkGroup title="Resources">
-                <FooterLink href="/help">Help Center</FooterLink>
+                <FooterLink href="/help-center">Help Center</FooterLink>
                 <FooterLink href="/tutorials">Tutorials</FooterLink>
                 <FooterLink href="/documentation">Documentation</FooterLink>
                 <FooterLink href="/webinars">Webinars</FooterLink>
@@ -84,9 +84,9 @@ export function Footer() {
         <div className="pt-8 border-t border-vibrant-pink/20 flex flex-col md:flex-row justify-between items-center text-light-gray text-sm">
           <p>© {currentYear} InsightHub. All rights reserved.</p>
           <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-4 md:mt-0">
-            <Link to="/terms" className="hover:text-bright-orange transition-colors">Terms of Service</Link>
-            <Link to="/privacy" className="hover:text-bright-orange transition-colors">Privacy Policy</Link>
-            <Link to="/cookies" className="hover:text-bright-orange transition-colors">Cookie Policy</Link>
+            <Link to="/terms-of-service" className="hover:text-bright-orange transition-colors">Terms of Service</Link>
+            <Link to="/privacy-policy" className="hover:text-bright-orange transition-colors">Privacy Policy</Link>
+            <Link to="/cookie-policy" className="hover:text-bright-orange transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>
@@ -118,14 +118,28 @@ function FooterLinkGroup({ title, children }: { title: string; children: React.R
 }
 
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+  // For external links, use regular <a>, for internal, use <Link>
+  if (href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) {
+    return (
+      <li>
+        <a 
+          href={href}
+          className="text-light-gray hover:text-bright-orange transition-colors"
+        >
+          {children}
+        </a>
+      </li>
+    );
+  }
+  
   return (
     <li>
-      <a 
-        href={href}
+      <Link 
+        to={href}
         className="text-light-gray hover:text-bright-orange transition-colors"
       >
         {children}
-      </a>
+      </Link>
     </li>
-  )
+  );
 }
