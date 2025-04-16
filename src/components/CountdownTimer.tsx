@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 export function CountdownTimer() {
   const [timeLeft, setTimeLeft] = useState({
-    days: 7,
+    days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0
@@ -14,12 +14,11 @@ export function CountdownTimer() {
     const endDate = new Date();
     endDate.setDate(endDate.getDate() + 7);
     
-    const timer = setInterval(() => {
+    const calculateTimeRemaining = () => {
       const now = new Date();
       const difference = endDate.getTime() - now.getTime();
       
       if (difference <= 0) {
-        clearInterval(timer);
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         return;
       }
@@ -30,8 +29,15 @@ export function CountdownTimer() {
       const seconds = Math.floor((difference % (1000 * 60)) / 1000);
       
       setTimeLeft({ days, hours, minutes, seconds });
-    }, 1000);
+    };
     
+    // Calculate immediately on mount
+    calculateTimeRemaining();
+    
+    // Set up interval
+    const timer = setInterval(calculateTimeRemaining, 1000);
+    
+    // Clean up on unmount
     return () => clearInterval(timer);
   }, []);
 

@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Logo } from "@/components/Logo";
@@ -160,6 +159,7 @@ export default function Dashboard() {
                 label="Courses"
                 bgColor="from-[#6e0415]/10 to-[#ff2100]/10"
                 borderColor="border-[#6e0415]"
+                image={null}
               />
               <DashboardStat 
                 icon={<Target className="h-5 w-5 text-[#ff2100]" />}
@@ -167,6 +167,7 @@ export default function Dashboard() {
                 label="Goal Progress"
                 bgColor="from-[#6e0415]/10 to-[#ff2100]/10"
                 borderColor="border-[#6e0415]"
+                image={null}
               />
               <DashboardStat 
                 icon={<FlameIcon className="h-5 w-5 text-[#ff2100]" />}
@@ -174,6 +175,7 @@ export default function Dashboard() {
                 label="Current Streak"
                 bgColor="from-[#6e0415]/10 to-[#ff2100]/10"
                 borderColor="border-[#6e0415]"
+                image={null}
               />
               <DashboardStat 
                 icon={<Coffee className="h-5 w-5 text-[#ff2100]" />}
