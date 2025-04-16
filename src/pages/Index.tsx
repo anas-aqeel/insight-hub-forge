@@ -13,7 +13,7 @@ import { PageLayout } from "@/components/PageLayout";
 
 const Index = () => {
   return (
-    <PageLayout>
+    <PageLayout noPadding={true}>
       <HeroSection />
       <AboutSection />
       <ChallengesSection />

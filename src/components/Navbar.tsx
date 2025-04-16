@@ -42,7 +42,7 @@ export function Navbar() {
 
   return (
     <header
-      className={`py-4 md:py-5 px-4 fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a0a0a]/90 backdrop-blur-lg border-b border-vibrant-pink/20' : 'bg-transparent'
+      className={`py-4 md:py-5 px-4 fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a0a0a]/90 backdrop-blur-lg border-b border-vibrant-pink/20' : 'bg-transparent border-b border-transparent'
         }`}
     >
       <div className="container mx-auto flex items-center justify-between">

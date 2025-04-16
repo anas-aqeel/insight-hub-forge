@@ -26,18 +26,19 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center py-12 px-4">
-      <div className="absolute inset-0 bg-gradient-primary -z-10" />
+    <div className="min-h-screen flex flex-col items-center justify-center py-12 px-4 bg-gradient-to-tl to-[#070707]  from-[#ff400000] relative">
+      {/* <div className="absolute inset-0 bg-gradient-to-tl to-[#070707]  from-[#ff400000] z-0" /> */}
+      <div className="pointer-events-none absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full bg-vibrant-pink/10 blur-3xl opacity-60 z-0"></div>
       <div className="absolute top-0 left-0 w-full p-6">
         <Logo />
       </div>
-      
+
       <div className="mb-8 text-center">
         <h2 className="text-2xl font-bold text-white mb-2">Early Access Closing In</h2>
         <p className="text-light-gray mb-6">Secure your spot before the waitlist closes</p>
         <CountdownTimer />
       </div>
-      
+
       <Card className="w-full max-w-md animate-scale-in bg-gradient-to-br from-[#1d0c0c]/90 to-[#230606]/80 border-[#6e0415]/70">
         <CardHeader className="space-y-1 text-center">
           <CardTitle className="text-3xl font-bold text-white">Join the Waitlist</CardTitle>
@@ -67,8 +68,8 @@ export default function SignupPage() {
                 required
               />
             </div>
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               className="w-full bg-gradient-to-r from-[#6e0415] to-[#ff2100] text-white hover:opacity-90 transition-opacity"
               disabled={isSubmitting}
             >
