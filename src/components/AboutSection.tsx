@@ -1,5 +1,5 @@
 
-import { Brain, Target, Zap, RocketLaunch, Star } from "lucide-react"
+import { Brain, Target, Zap, Rocket, Star } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card-custom"
 
 export function AboutSection() {
@@ -52,7 +52,7 @@ export function AboutSection() {
           <Card className="hover:border-bright-orange transition-all duration-300 transform hover:-translate-y-2 animate-slide-in-delay-3 backdrop-blur-md">
             <CardContent className="p-6 flex flex-col items-center text-center h-full">
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-vibrant-pink/30 to-bright-orange/30 flex items-center justify-center mb-4 border border-bright-orange/40">
-                <RocketLaunch size={30} className="text-bright-orange" />
+                <Rocket size={30} className="text-bright-orange" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-3">Why InsightHub?</h3>
               <p className="text-light-gray mb-4 flex-grow">
