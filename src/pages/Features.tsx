@@ -88,7 +88,7 @@ export default function Features() {
     <PageLayout>
       <section className="py-20 relative">
         <div className="absolute top-0 left-1/4 w-72 h-72 bg-vibrant-pink/10 rounded-full blur-3xl -z-10"></div>
-        
+
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16 animate-slide-in">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">Powerful Features for Modern Learning</h1>
@@ -98,20 +98,23 @@ export default function Features() {
           </div>
         </div>
       </section>
-      
+
       <section className="py-12 relative overflow-hidden">
         <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-bright-orange/10 rounded-full blur-3xl -z-10"></div>
-        
+
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 mb-20">
             {detailedFeatures.map((feature, index) => (
               <div key={index} className="animate-slide-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <Card className="h-full bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30 hover:border-bright-orange/40 transition-all duration-300">
                   <CardContent className="p-8">
-                    <div className="mb-6 inline-flex items-center justify-center w-14 h-14 rounded-lg bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 border border-vibrant-pink/30">
-                      <feature.icon className="h-7 w-7 text-bright-orange" />
+                    <div className="flex items-center gap-3">
+
+                      <div className="mb-6 inline-flex items-center justify-center w-14 h-14 rounded-lg bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 border border-vibrant-pink/30">
+                        <feature.icon className="h-7 w-7 text-bright-orange" />
+                      </div>
+                      <h3 className="text-2xl font-semibold mb-4 text-white">{feature.title}</h3>
                     </div>
-                    <h3 className="text-2xl font-semibold mb-4 text-white">{feature.title}</h3>
                     <p className="text-light-gray mb-6">{feature.description}</p>
                     <ul className="space-y-2">
                       {feature.items.map((item, idx) => (
@@ -137,7 +140,7 @@ export default function Features() {
               InsightHub's features are designed to address the real challenges students face, providing effective solutions that enhance learning outcomes.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30 animate-slide-in">
               <CardContent className="p-6">
@@ -150,7 +153,7 @@ export default function Features() {
                 </p>
               </CardContent>
             </Card>
-            
+
             <Card className="bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30 animate-slide-in-delay-1">
               <CardContent className="p-6">
                 <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 border border-vibrant-pink/30">
@@ -162,7 +165,7 @@ export default function Features() {
                 </p>
               </CardContent>
             </Card>
-            
+
             <Card className="bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30 animate-slide-in-delay-2">
               <CardContent className="p-6">
                 <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 border border-vibrant-pink/30">
@@ -177,10 +180,10 @@ export default function Features() {
           </div>
         </div>
       </section>
-      
+
       <section className="py-16 relative">
         <div className="absolute top-0 right-1/4 w-72 h-72 bg-vibrant-pink/10 rounded-full blur-3xl -z-10"></div>
-        
+
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-3xl font-bold mb-4 text-white">What Our Users Are Saying</h2>
@@ -188,7 +191,7 @@ export default function Features() {
               Hear from students who have transformed their learning experience with InsightHub.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <Card key={index} className="bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30 animate-slide-in" style={{ animationDelay: `${index * 0.1}s` }}>
@@ -212,13 +215,13 @@ export default function Features() {
               </Card>
             ))}
           </div>
-          
+
           <div className="mt-12 text-center">
             <Button>Read More Success Stories</Button>
           </div>
         </div>
       </section>
-      
+
       <section className="py-16 bg-gradient-to-br from-vibrant-pink/10 to-bright-orange/10 border-y border-vibrant-pink/20">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
@@ -233,7 +236,7 @@ export default function Features() {
           </div>
         </div>
       </section>
-      
+
       <CTASection />
     </PageLayout>
   );

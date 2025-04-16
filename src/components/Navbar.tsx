@@ -17,7 +17,7 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
-  
+
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10
@@ -25,13 +25,13 @@ export function Navbar() {
         setScrolled(isScrolled)
       }
     }
-    
+
     window.addEventListener('scroll', handleScroll)
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [scrolled])
-  
+
   const toggleMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen)
   }
@@ -39,19 +39,18 @@ export function Navbar() {
   const toggleSubmenu = (menu: string) => {
     setActiveSubmenu(activeSubmenu === menu ? null : menu)
   }
-  
+
   return (
-    <header 
-      className={`py-4 md:py-5 px-4 fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-[#0a0a0a]/90 backdrop-blur-lg border-b border-vibrant-pink/20' : 'bg-transparent'
-      }`}
+    <header
+      className={`py-4 md:py-5 px-4 fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a0a0a]/90 backdrop-blur-lg border-b border-vibrant-pink/20' : 'bg-transparent'
+        }`}
     >
       <div className="container mx-auto flex items-center justify-between">
         <Logo />
-        
+
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-8">
-          <div className="hidden lg:flex space-x-8">
+          <div className="hidden lg:flex gap-x-8">
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
@@ -59,13 +58,13 @@ export function Navbar() {
                     Home
                   </Link>
                 </NavigationMenuItem>
-                
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-white hover:text-bright-orange bg-transparent hover:bg-transparent focus:bg-transparent">
+
+                <NavigationMenuItem >
+                  <NavigationMenuTrigger className="relative data-[state=open]:bg-transparent border-none bg-transparent hover:bg-transparent hover:text-bright-orange  text-white transition-colors duration-300">
                     Features
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                  <NavigationMenuContent className="border-transparent outline-none border-[0px]">
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]  border border-bright-orange/50 rounded-xl">
                       <FeatureNavItem
                         title="AI Tutor"
                         href="/features"
@@ -97,7 +96,7 @@ export function Navbar() {
                         description="Connect with peers and experts"
                       />
                       <li className="col-span-2 mt-2">
-                        <Link 
+                        <Link
                           to="/features"
                           className="w-full inline-block text-center p-2 px-4 rounded-md bg-gradient-to-r from-[#6e0415]/50 to-[#ff2100]/50 border border-[#6e0415] text-white hover:bg-gradient-to-r hover:from-[#6e0415]/70 hover:to-[#ff2100]/70 transition-colors"
                         >
@@ -107,25 +106,29 @@ export function Navbar() {
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-                
-                <NavigationMenuItem>
+
+                <NavigationMenuItem className="mr-4">
+
                   <Link to="/pricing" className="text-white hover:text-bright-orange transition-colors">
                     Pricing
                   </Link>
                 </NavigationMenuItem>
-                
+
                 <NavigationMenuItem>
                   <Link to="/about" className="text-white hover:text-bright-orange transition-colors">
                     About
                   </Link>
                 </NavigationMenuItem>
-                
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-white hover:text-bright-orange bg-transparent hover:bg-transparent focus:bg-transparent">
+
+                <NavigationMenuItem className="relative">
+
+                  <NavigationMenuTrigger className="relative data-[state=open]:bg-transparent border-none bg-transparent hover:bg-transparent hover:text-bright-orange  text-white transition-colors duration-300">
+
                     Resources
+
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-3 p-4 bg-[#1d0c0c] border border-[#6e0415]">
+                  <NavigationMenuContent >
+                    <ul className="grid w-[200px] gap-3 p-4 bg-[#1d0c0c] border border-bright-orange/50 rounded-xl">
                       <ResourceNavItem
                         title="Help Center"
                         href="/help-center"
@@ -149,7 +152,7 @@ export function Navbar() {
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-                
+
                 <NavigationMenuItem>
                   <Link to="/contact" className="text-white hover:text-bright-orange transition-colors">
                     Contact
@@ -158,16 +161,16 @@ export function Navbar() {
               </NavigationMenuList>
             </NavigationMenu>
           </div>
-          
+
           <div className="flex items-center space-x-4">
             <Button asChild variant="outline">
               <Link to="/signup">Sign Up</Link>
             </Button>
           </div>
         </nav>
-        
+
         {/* Mobile Menu Button */}
-        <button 
+        <button
           className="lg:hidden text-bright-orange p-2"
           onClick={toggleMenu}
           aria-label="Toggle menu"
@@ -175,21 +178,21 @@ export function Navbar() {
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
-      
+
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-[#0a0a0a]/95 backdrop-blur-lg border-t border-vibrant-pink/20 absolute top-full left-0 right-0 z-50 p-4 animate-fade-in max-h-[80vh] overflow-y-auto">
           <nav className="flex flex-col space-y-1">
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="py-2 px-4 text-lg text-white hover:text-bright-orange transition-colors border-b border-vibrant-pink/10"
               onClick={() => setMobileMenuOpen(false)}
             >
               Home
             </Link>
-            
+
             <div>
-              <button 
+              <button
                 className="w-full flex justify-between items-center py-2 px-4 text-lg text-white hover:text-bright-orange transition-colors border-b border-vibrant-pink/10"
                 onClick={() => toggleSubmenu('features')}
               >
@@ -198,29 +201,29 @@ export function Navbar() {
               </button>
               {activeSubmenu === 'features' && (
                 <div className="py-2 px-6 space-y-2 bg-dark-gray/20 rounded-md my-1">
-                  <Link 
-                    to="/features" 
+                  <Link
+                    to="/features"
                     className="block py-1 text-light-gray hover:text-bright-orange"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     AI Tutor
                   </Link>
-                  <Link 
-                    to="/features" 
+                  <Link
+                    to="/features"
                     className="block py-1 text-light-gray hover:text-bright-orange"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Study Planner
                   </Link>
-                  <Link 
-                    to="/features" 
+                  <Link
+                    to="/features"
                     className="block py-1 text-light-gray hover:text-bright-orange"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Knowledge Feed
                   </Link>
-                  <Link 
-                    to="/features" 
+                  <Link
+                    to="/features"
                     className="block py-1 text-light-gray hover:text-bright-orange"
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -229,25 +232,25 @@ export function Navbar() {
                 </div>
               )}
             </div>
-            
-            <Link 
-              to="/pricing" 
+
+            <Link
+              to="/pricing"
               className="py-2 px-4 text-lg text-white hover:text-bright-orange transition-colors border-b border-vibrant-pink/10"
               onClick={() => setMobileMenuOpen(false)}
             >
               Pricing
             </Link>
-            
-            <Link 
-              to="/about" 
+
+            <Link
+              to="/about"
               className="py-2 px-4 text-lg text-white hover:text-bright-orange transition-colors border-b border-vibrant-pink/10"
               onClick={() => setMobileMenuOpen(false)}
             >
               About
             </Link>
-            
+
             <div>
-              <button 
+              <button
                 className="w-full flex justify-between items-center py-2 px-4 text-lg text-white hover:text-bright-orange transition-colors border-b border-vibrant-pink/10"
                 onClick={() => toggleSubmenu('resources')}
               >
@@ -256,36 +259,36 @@ export function Navbar() {
               </button>
               {activeSubmenu === 'resources' && (
                 <div className="py-2 px-6 space-y-2 bg-dark-gray/20 rounded-md my-1">
-                  <Link 
-                    to="/help-center" 
+                  <Link
+                    to="/help-center"
                     className="block py-1 text-light-gray hover:text-bright-orange"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Help Center
                   </Link>
-                  <Link 
-                    to="/documentation" 
+                  <Link
+                    to="/documentation"
                     className="block py-1 text-light-gray hover:text-bright-orange"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Documentation
                   </Link>
-                  <Link 
-                    to="/tutorials" 
+                  <Link
+                    to="/tutorials"
                     className="block py-1 text-light-gray hover:text-bright-orange"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Tutorials
                   </Link>
-                  <Link 
-                    to="/webinars" 
+                  <Link
+                    to="/webinars"
                     className="block py-1 text-light-gray hover:text-bright-orange"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Webinars
                   </Link>
-                  <Link 
-                    to="/blog" 
+                  <Link
+                    to="/blog"
                     className="block py-1 text-light-gray hover:text-bright-orange"
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -294,15 +297,15 @@ export function Navbar() {
                 </div>
               )}
             </div>
-            
-            <Link 
-              to="/contact" 
+
+            <Link
+              to="/contact"
               className="py-2 px-4 text-lg text-white hover:text-bright-orange transition-colors border-b border-vibrant-pink/10"
               onClick={() => setMobileMenuOpen(false)}
             >
               Contact
             </Link>
-            
+
             <div className="flex flex-col space-y-3 pt-4 border-t border-vibrant-pink/20">
               <Button asChild variant="outline" className="w-full">
                 <Link to="/signup" onClick={() => setMobileMenuOpen(false)}>Sign Up</Link>

@@ -18,11 +18,11 @@ export function WhatWeOfferSection() {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="sm:grid-cols-2 grid gap-8 place-items-center max-w-5xl mx-auto w-full">
           {offerItems.map((item, index) => (
             <div 
               key={index} 
-              className={`p-8 border border-vibrant-pink/30 rounded-xl bg-dark-gray/30 backdrop-blur-md hover:border-vibrant-pink/50 transition-all duration-300 animate-slide-in-delay-${index % 2 + 1} flex flex-col h-full`}
+              className={`p-8 border border-vibrant-pink/30  w-full h-full rounded-xl bg-dark-gray/30 backdrop-blur-md hover:border-vibrant-pink/50 transition-all duration-300 animate-slide-in-delay-${index % 2 + 1} flex flex-col h-full`}
             >
               <div className="mb-6">
                 <div className="flex items-center gap-4 mb-6">
@@ -53,7 +53,7 @@ export function WhatWeOfferSection() {
           ))}
         </div>
         
-        <div className="mt-16 grid md:grid-cols-3 gap-8">
+        <div className="mt-16 grid md:grid-cols-3 gap-8  max-w-5xl mx-auto w-full">
           {stats.map((stat, index) => (
             <div 
               key={index} 

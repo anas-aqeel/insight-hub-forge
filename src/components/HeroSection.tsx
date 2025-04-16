@@ -95,23 +95,23 @@ export function HeroSection() {
             </div>
           </form>
           
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <Button asChild size="lg" className="text-base font-medium bg-gradient-to-r from-vibrant-pink to-bright-orange text-white hover:opacity-90 transition-opacity">
+          <div className="flex flex-row gap-4 pt-4">
+            <Button asChild size="lg" className="w-full text-base font-medium bg-gradient-to-r from-vibrant-pink to-bright-orange text-white hover:opacity-90 transition-opacity">
               <Link to="/signup">
                 Get Started
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="text-base font-medium">
+            <Button asChild variant="outline" size="lg" className="w-full text-base font-medium">
               <Link to="/demo">Watch Demo</Link>
             </Button>
           </div>
         </div>
         
-        <div className="relative w-full h-full min-h-[300px] md:min-h-[400px] animate-slide-in-delay-2">
+        <div className="relative w-full h-full  aspect-square  animate-slide-in-delay-2">
           <div className="absolute inset-0 bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 rounded-xl blur-xl opacity-70"></div>
           <img 
-            src={heroImage} 
+            src={'https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-dec4-622f-8890-b083de5c2ef1/raw?se=2025-04-16T21%3A58%3A11Z&sp=r&sv=2024-08-04&sr=b&scid=e3a20f41-6180-5e8e-8279-eea86523eb71&skoid=e872f19f-7b7f-4feb-9998-20052dec61d6&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-16T19%3A45%3A41Z&ske=2025-04-17T19%3A45%3A41Z&sks=b&skv=2024-08-04&sig=lXhPzg%2B8xtvZTQW%2BHqUHz1uiKMoUlB3l2DqSJNuLdN8%3D'} 
             alt="InsightHub interface showing AI-powered learning tools" 
             className="relative z-10 w-full h-full object-cover rounded-xl border border-vibrant-pink/30"
           />

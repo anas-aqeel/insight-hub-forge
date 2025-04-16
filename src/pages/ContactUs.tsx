@@ -32,7 +32,7 @@ export default function ContactUs() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-7 flex flex-col gap-8">
-              <Card className="bg-gradient-to-br from-[#1d0c0c]/70 to-[#230606]/70 border-[#6e0415]/50 animate-slide-in h-full flex flex-col">
+              <Card className="bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border border-vibrant-pink/30 p-1 hover:border-bright-orange animate-slide-in h-full flex flex-col">
                 <CardContent className="p-8 flex-1 flex flex-col">
                   {submitted ? (
                     <div className="flex flex-col items-center justify-center py-8 flex-1">
@@ -107,7 +107,7 @@ export default function ContactUs() {
                 </CardContent>
               </Card>
               
-              <Card className="bg-gradient-to-br from-[#1d0c0c]/70 to-[#230606]/70 border-[#6e0415]/50 animate-slide-in-delay-1">
+              <Card className="bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border border-vibrant-pink/30 p-1 hover:border-bright-orange animate-slide-in-delay-1">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-bold mb-6 text-white flex items-center gap-2">
                     <Users size={20} className="text-[#ff2100]" />
@@ -135,7 +135,7 @@ export default function ContactUs() {
             </div>
             
             <div className="lg:col-span-5 flex flex-col gap-8">
-              <Card className="h-full bg-gradient-to-br from-[#1d0c0c]/70 to-[#230606]/70 border-[#6e0415]/50 animate-slide-in-delay-2">
+              <Card className="h-full bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border border-vibrant-pink/30 p-1 hover:border-bright-orange animate-slide-in-delay-2">
                 <CardContent className="p-8 h-full flex flex-col">
                   <h3 className="text-2xl font-bold mb-6 text-white flex items-center gap-2">
                     <MessageSquare size={20} className="text-[#ff2100]" />
@@ -204,7 +204,7 @@ export default function ContactUs() {
                 </CardContent>
               </Card>
               
-              <Card className="bg-gradient-to-br from-[#1d0c0c]/70 to-[#230606]/70 border-[#6e0415]/50 animate-slide-in-delay-3">
+              <Card className="bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border border-vibrant-pink/30 p-1 hover:border-bright-orange animate-slide-in-delay-3">
                 <CardContent className="p-8">
                   <h3 className="text-xl font-bold mb-4 text-white flex items-center gap-2">
                     <Building size={20} className="text-[#ff2100]" />

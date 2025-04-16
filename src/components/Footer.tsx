@@ -1,121 +1,150 @@
 
-import { Logo } from "./Logo";
-import { Button } from "@/components/ui/button-custom";
-import { Facebook, Instagram, Twitter, Linkedin, Github, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Logo } from "./Logo"
+import { Link } from "react-router-dom"
+import { Facebook, Twitter, Linkedin, Instagram, Github, Mail, MapPin, Phone } from "lucide-react"
+import { Button } from "@/components/ui/button-custom"
+import { Input } from "@/components/ui/input"
 
 export function Footer() {
+  const currentYear = new Date().getFullYear()
+
   return (
-    <footer className="bg-[#0a0a0a] border-t border-vibrant-pink/20 pt-16 pb-8">
+    <footer className="py-16 md:py-20 border-t border-vibrant-pink/20 bg-[#0a0a0a]/80 backdrop-blur-sm">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          <div className="space-y-4">
-            <Logo />
-            <p className="text-light-gray">
-              The AI-powered learning platform that personalizes your educational journey and maximizes your potential.
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-12">
+          <div className="md:col-span-5 lg:col-span-4">
+            <Logo size="medium" />
+            <p className="mt-4 text-light-gray max-w-md">
+              InsightHub is an AI-powered learning ecosystem that helps students learn smarter, stay ahead, and achieve their academic goals faster.
             </p>
-            <div className="flex space-x-3">
-              <SocialLink href="#" icon={<Facebook size={18} />} />
-              <SocialLink href="#" icon={<Instagram size={18} />} />
-              <SocialLink href="#" icon={<Twitter size={18} />} />
-              <SocialLink href="#" icon={<Linkedin size={18} />} />
-              <SocialLink href="#" icon={<Github size={18} />} />
+
+            <div className="mt-8">
+              <p className="text-white font-medium mb-4">Subscribe to our newsletter</p>
+              <div className="flex flex-col sm:flex-row gap-2">
+                <Input
+                  type="email"
+                  placeholder="Your email"
+                  className="bg-dark-gray/50 border-vibrant-pink/30 text-white placeholder:text-white/50"
+                />
+                <Button variant="default" className="bg-gradient-to-r from-vibrant-pink to-bright-orange text-white hover:opacity-90 transition-opacity">Subscribe</Button>
+              </div>
+            </div>
+
+            <div className="flex space-x-4 mt-8">
+              <SocialLink href="#" icon={Twitter} label="Twitter" />
+              <SocialLink href="#" icon={Linkedin} label="LinkedIn" />
+              <SocialLink href="#" icon={Facebook} label="Facebook" />
+              <SocialLink href="#" icon={Instagram} label="Instagram" />
+              <SocialLink href="#" icon={Github} label="GitHub" />
             </div>
           </div>
-          
-          <div className="space-y-4">
-            <h3 className="text-white font-semibold text-lg">Pages</h3>
-            <ul className="space-y-2">
-              <li>
-                <FooterLink href="/" text="Home" />
-              </li>
-              <li>
-                <FooterLink href="/features" text="Features" />
-              </li>
-              <li>
-                <FooterLink href="/pricing" text="Pricing" />
-              </li>
-              <li>
-                <FooterLink href="/about" text="About" />
-              </li>
-              <li>
-                <FooterLink href="/contact" text="Contact" />
-              </li>
-            </ul>
-          </div>
-          
-          <div className="space-y-4">
-            <h3 className="text-white font-semibold text-lg">Resources</h3>
-            <ul className="space-y-2">
-              <li>
-                <FooterLink href="/blog" text="Blog" />
-              </li>
-              <li>
-                <FooterLink href="/help-center" text="Help Center" />
-              </li>
-              <li>
-                <FooterLink href="/documentation" text="Documentation" />
-              </li>
-              <li>
-                <FooterLink href="/tutorials" text="Tutorials" />
-              </li>
-              <li>
-                <FooterLink href="/webinars" text="Webinars" />
-              </li>
-            </ul>
-          </div>
-          
-          <div className="space-y-4">
-            <h3 className="text-white font-semibold text-lg">Subscribe</h3>
-            <p className="text-light-gray">
-              Subscribe to our newsletter to get the latest updates.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-2">
-              <input 
-                type="email" 
-                placeholder="Your email" 
-                className="px-4 py-2 rounded-lg bg-dark-gray/50 border border-vibrant-pink/30 text-white placeholder:text-white/50 focus:outline-none focus:ring-1 focus:ring-vibrant-pink w-full"
-              />
-              <Button className="shrink-0 bg-gradient-to-r from-vibrant-pink to-bright-orange">
-                <ArrowRight size={18} />
-              </Button>
+
+          <div className="md:col-span-7 lg:col-span-8">
+            <div className="grid grid-cols-1  lg:grid-cols-5 gap-8">
+              <div className="grid grid-cols-3  sm:grid-cols-3  gap-2 col-span-1 lg:col-span-3">
+                <FooterLinkGroup title="Quick Links">
+                  <FooterLink href="/">Home</FooterLink>
+                  <FooterLink href="/about">About</FooterLink>
+                  <FooterLink href="/features">Features</FooterLink>
+                  <FooterLink href="/pricing">Pricing</FooterLink>
+                  <FooterLink href="/contact">Contact</FooterLink>
+                </FooterLinkGroup>
+
+                <FooterLinkGroup title="Resources">
+                  <FooterLink href="/help-center">Help Center</FooterLink>
+                  <FooterLink href="/tutorials">Tutorials</FooterLink>
+                  <FooterLink href="/documentation">Documentation</FooterLink>
+                  <FooterLink href="/webinars">Webinars</FooterLink>
+                  <FooterLink href="/blog">Blog</FooterLink>
+                </FooterLinkGroup>
+
+                <FooterLinkGroup title="Company">
+                  <FooterLink href="/about">About Us</FooterLink>
+                  <FooterLink href="/careers">Careers</FooterLink>
+                  <FooterLink href="/contact">Contact Us</FooterLink>
+                  <FooterLink href="/press">Press</FooterLink>
+                  <FooterLink href="/demo">Demo</FooterLink>
+                </FooterLinkGroup>
+              </div>
+              <div className="col-span-1 lg:col-span-2">
+                <FooterLinkGroup title="Contact" >
+                  <li className="flex items-start gap-2 text-light-gray hover:text-bright-orange transition-colors">
+                    <Mail size={16} className="shrink-0 mt-1 text-bright-orange" />
+                    <a href="mailto:info@insighthub.com">info@insighthub.com</a>
+                  </li>
+                  <li className="flex items-start gap-2 text-light-gray hover:text-bright-orange transition-colors">
+                    <Phone size={16} className="shrink-0 mt-1 text-bright-orange" />
+                    <a href="tel:+12345678900">+1 (234) 567-8900</a>
+                  </li>
+                  <li className="flex items-start gap-2 text-light-gray">
+                    <MapPin size={16} className="shrink-0 mt-1 text-bright-orange" />
+                    <span>123 AI Street, Silicon Valley, CA 94043</span>
+                  </li>
+                </FooterLinkGroup>
+              </div>
             </div>
           </div>
         </div>
-        
-        <div className="border-t border-white/10 pt-8 mt-8 flex flex-col sm:flex-row justify-between items-center">
-          <div className="text-light-gray text-sm mb-4 sm:mb-0 text-center sm:text-left">
-            © {new Date().getFullYear()} InsightHub. All rights reserved.
-          </div>
-          <div className="flex flex-wrap justify-center sm:justify-end gap-4 sm:gap-8">
-            <FooterLink href="/privacy-policy" text="Privacy Policy" small />
-            <FooterLink href="/terms-of-service" text="Terms of Service" small />
-            <FooterLink href="/cookie-policy" text="Cookie Policy" small />
+
+        <div className="pt-8 border-t border-vibrant-pink/20 flex flex-col md:flex-row justify-between items-center text-light-gray text-sm">
+          <p>© {currentYear} InsightHub. All rights reserved.</p>
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-4 md:mt-0">
+            <Link to="/terms-of-service" className="hover:text-bright-orange transition-colors">Terms of Service</Link>
+            <Link to="/privacy-policy" className="hover:text-bright-orange transition-colors">Privacy Policy</Link>
+            <Link to="/cookie-policy" className="hover:text-bright-orange transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>
     </footer>
-  );
+  )
 }
 
-function SocialLink({ href, icon }: { href: string; icon: React.ReactNode }) {
+function SocialLink({ href, icon: Icon, label }: { href: string; icon: React.ComponentType<any>; label: string }) {
   return (
     <a
       href={href}
-      className="w-8 h-8 flex items-center justify-center rounded-full bg-dark-gray/50 border border-vibrant-pink/30 text-vibrant-pink hover:bg-vibrant-pink/20 hover:border-vibrant-pink/50 transition-colors"
+      className="w-10 h-10 flex items-center justify-center rounded-full bg-dark-gray/50 border border-vibrant-pink/30 text-bright-orange hover:bg-bright-orange/20 hover:border-bright-orange/50 transition-colors"
+      aria-label={label}
     >
-      {icon}
+      <Icon size={18} />
     </a>
-  );
+  )
 }
 
-function FooterLink({ href, text, small = false }: { href: string; text: string; small?: boolean }) {
+function FooterLinkGroup({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <Link
-      to={href}
-      className={`text-light-gray hover:text-vibrant-pink transition-colors ${small ? 'text-sm' : ''}`}
-    >
-      {text}
-    </Link>
+    <div>
+      <h4 className="font-semibold text-white mb-4">{title}</h4>
+      <ul className="space-y-2">
+        {children}
+      </ul>
+    </div>
+  )
+}
+
+function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+  // For external links, use regular <a>, for internal, use <Link>
+  if (href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) {
+    return (
+      <li>
+        <a
+          href={href}
+          className="text-light-gray hover:text-bright-orange transition-colors"
+        >
+          {children}
+        </a>
+      </li>
+    );
+  }
+
+  return (
+    <li>
+      <Link
+        to={href}
+        className="text-light-gray hover:text-bright-orange transition-colors"
+      >
+        {children}
+      </Link>
+    </li>
   );
 }

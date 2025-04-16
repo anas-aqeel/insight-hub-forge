@@ -77,7 +77,7 @@ export default function About() {
               <Star size={24} className="text-bright-orange" />
               Our Core Values
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
               {coreValues.map((value, index) => (
                 <Card key={index} className="h-full bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30">
                   <CardContent className="p-6 flex flex-col items-center text-center">

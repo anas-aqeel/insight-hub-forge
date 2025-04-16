@@ -1,56 +1,56 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Logo } from "@/components/Logo";
-import { 
-  CheckCircle2, Lightbulb, MoreVertical, Send, Bell, User, ChevronDown, 
+import {
+  CheckCircle2, Lightbulb, MoreVertical, Send, Bell, User, ChevronDown,
   BookOpen, Zap, Calendar, Users, Search, Bookmark, TrendingUp, Star,
   MessageSquare, Award, BarChart3, FileText, Heart, Eye, Target, FlameIcon, Coffee
 } from "lucide-react";
 import { useState, useEffect } from "react";
-import { 
-  Popover, 
-  PopoverContent, 
-  PopoverTrigger 
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger
 } from "@/components/ui/popover";
 
 export default function Dashboard() {
   const [inputValue, setInputValue] = useState("");
   const [notifications, setNotifications] = useState(3);
   const [currentStreak, setCurrentStreak] = useState(7);
-  
+
   return (
     <div className="min-h-screen flex flex-col bg-[#070707]">
       <header className="border-b border-white/10 bg-black/30 backdrop-blur-md sticky top-0 z-50">
         <div className="container mx-auto px-4 py-3 flex items-center justify-between">
           <Logo />
-          
+
           <div className="hidden md:flex items-center space-x-1">
-            <Button 
-              variant="ghost" 
-              className="text-white/70 hover:text-white hover:bg-[#23060a] hover:border hover:border-[#6e0415]"
+            <Button
+              variant="ghost"
+              className="text-white/70 hover:text-white hover:bg-[#23060a] border border-transparent hover:border-[#6e0415] outline-none"
             >
               Dashboard
             </Button>
-            <Button 
-              variant="ghost" 
-              className="text-white/70 hover:text-white hover:bg-[#23060a] hover:border hover:border-[#6e0415]"
+            <Button
+              variant="ghost"
+              className="text-white/70 hover:text-white hover:bg-[#23060a] border border-transparent hover:border-[#6e0415] outline-none"
             >
               Courses
             </Button>
-            <Button 
-              variant="ghost" 
-              className="text-white/70 hover:text-white hover:bg-[#23060a] hover:border hover:border-[#6e0415]"
+            <Button
+              variant="ghost"
+              className="text-white/70 hover:text-white hover:bg-[#23060a] border border-transparent hover:border-[#6e0415] outline-none"
             >
               Knowledge
             </Button>
-            <Button 
-              variant="ghost" 
-              className="text-white/70 hover:text-white hover:bg-[#23060a] hover:border hover:border-[#6e0415]"
+            <Button
+              variant="ghost"
+              className="text-white/70 hover:text-white hover:bg-[#23060a] border border-transparent hover:border-[#6e0415] outline-none"
             >
               Community
             </Button>
           </div>
-          
+
           <div className="flex items-center gap-2">
             <div className="relative">
               <Popover>
@@ -119,7 +119,7 @@ export default function Dashboard() {
                 </PopoverContent>
               </Popover>
             </div>
-            
+
             <Button variant="ghost" className="hidden md:flex items-center gap-2 text-white">
               <div className="w-8 h-8 rounded-full bg-bright-orange flex items-center justify-center text-white">
                 U
@@ -127,14 +127,14 @@ export default function Dashboard() {
               <span>User</span>
               <ChevronDown size={14} />
             </Button>
-            
+
             <Button variant="ghost" className="md:hidden rounded-full w-9 h-9 p-0">
               <User size={20} className="text-white/70" />
             </Button>
           </div>
         </div>
       </header>
-      
+
       <main className="flex-1 container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
           <div>
@@ -147,48 +147,44 @@ export default function Dashboard() {
             </Button>
           </div>
         </div>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Left Column */}
           <div className="lg:col-span-8 space-y-6">
             {/* Stats Row */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <DashboardStat 
+              <DashboardStat
                 icon={<BookOpen className="h-5 w-5 text-[#ff2100]" />}
                 value="12"
                 label="Courses"
                 bgColor="from-[#6e0415]/10 to-[#ff2100]/10"
-                borderColor="border-[#6e0415]"
-                image={null}
+
               />
-              <DashboardStat 
+              <DashboardStat
                 icon={<Target className="h-5 w-5 text-[#ff2100]" />}
                 value="86%"
                 label="Goal Progress"
                 bgColor="from-[#6e0415]/10 to-[#ff2100]/10"
-                borderColor="border-[#6e0415]"
-                image={null}
+
               />
-              <DashboardStat 
+              <DashboardStat
                 icon={<FlameIcon className="h-5 w-5 text-[#ff2100]" />}
                 value={`${currentStreak} days`}
                 label="Current Streak"
                 bgColor="from-[#6e0415]/10 to-[#ff2100]/10"
-                borderColor="border-[#6e0415]"
-                image={null}
+
               />
-              <DashboardStat 
+              <DashboardStat
                 icon={<Coffee className="h-5 w-5 text-[#ff2100]" />}
                 value="4.5 hrs"
                 label="Study Time"
                 bgColor="from-[#6e0415]/10 to-[#ff2100]/10"
-                borderColor="border-[#6e0415]"
-                image="/lovable-uploads/6db06a49-2687-4c19-a787-f58b34f9b9a9.png"
+
               />
             </div>
-            
+
             {/* AI Tutor Card */}
-            <Card className="bg-gradient-to-br from-[#230606]/70 to-[#1d0c0c]/90 border border-[#6e0415]/50 min-h-[500px] flex flex-col">
+            <div className="rounded-lg  shadow-sm bg-gradient-to-br from-[#6e0415]/10 to-[#ff2100]/10 border border-vibrant-pink/30 min-h-[500px] flex flex-col">
               <CardHeader className="border-b border-white/10">
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-white flex items-center gap-2">
@@ -197,8 +193,8 @@ export default function Dashboard() {
                     </div>
                     AI-Powered Tutor
                   </CardTitle>
-                  <Button variant="ghost" size="icon">
-                    <MoreVertical className="h-5 w-5 text-white/70" />
+                  <Button className="text-white/70 hover:text-white hover:bg-[#ff2100]/20  h-10 w-10 bg-transparent ">
+                    <MoreVertical className="h-5 w-5" />
                   </Button>
                 </div>
               </CardHeader>
@@ -212,7 +208,7 @@ export default function Dashboard() {
                       What is thermodynamics?
                     </div>
                   </div>
-                  
+
                   <div className="flex gap-3">
                     <div className="w-8 h-8 rounded-full bg-[#ff2100]/20 flex items-center justify-center flex-shrink-0">
                       <span className="text-[#ff2100] text-sm">AI</span>
@@ -222,7 +218,7 @@ export default function Dashboard() {
                       <p className="mt-2">The first law of thermodynamics states that energy cannot be created or destroyed, only transformed from one form to another.</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex gap-3">
                     <div className="w-8 h-8 rounded-full bg-[#6e0415]/40 flex items-center justify-center flex-shrink-0">
                       <span className="text-[#ff2100] text-sm">You</span>
@@ -231,7 +227,7 @@ export default function Dashboard() {
                       The first law of thermodynamics?
                     </div>
                   </div>
-                  
+
                   <div className="flex gap-3">
                     <div className="w-8 h-8 rounded-full bg-[#ff2100]/20 flex items-center justify-center flex-shrink-0">
                       <span className="text-[#ff2100] text-sm">AI</span>
@@ -241,7 +237,7 @@ export default function Dashboard() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="border-t border-white/10 pt-4">
                   <div className="flex items-center gap-2">
                     <input
@@ -257,10 +253,10 @@ export default function Dashboard() {
                   </div>
                 </div>
               </CardContent>
-            </Card>
-            
+            </div>
+
             {/* Recent Activity */}
-            <Card className="bg-gradient-to-br from-[#230606]/70 to-[#1d0c0c]/90 border border-[#6e0415]/50">
+            <div className="rounded-lg  shadow-sm bg-gradient-to-br from-[#6e0415]/10 to-[#ff2100]/10 border border-vibrant-pink/30">
               <CardHeader className="border-b border-white/10">
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-white flex items-center gap-2">
@@ -276,25 +272,25 @@ export default function Dashboard() {
               </CardHeader>
               <CardContent className="pt-4">
                 <div className="space-y-4">
-                  <ActivityItem 
+                  <ActivityItem
                     icon={<BookOpen size={16} className="text-[#ff2100]" />}
                     title="Completed Lesson"
                     description="Introduction to Neural Networks"
                     time="2 hours ago"
                   />
-                  <ActivityItem 
+                  <ActivityItem
                     icon={<FileText size={16} className="text-[#ff2100]" />}
                     title="Created Notes"
                     description="Thermodynamics Principles"
                     time="Yesterday"
                   />
-                  <ActivityItem 
+                  <ActivityItem
                     icon={<CheckCircle2 size={16} className="text-[#ff2100]" />}
                     title="Completed Quiz"
                     description="Physics: Forces and Motion"
                     time="Yesterday"
                   />
-                  <ActivityItem 
+                  <ActivityItem
                     icon={<Award size={16} className="text-[#ff2100]" />}
                     title="Earned Badge"
                     description="Consistent Learner"
@@ -302,13 +298,13 @@ export default function Dashboard() {
                   />
                 </div>
               </CardContent>
-            </Card>
+            </div>
           </div>
-          
+
           {/* Right Column */}
           <div className="lg:col-span-4 space-y-6">
             {/* Study Planner */}
-            <Card className="bg-gradient-to-br from-[#230606]/70 to-[#1d0c0c]/90 border border-[#6e0415]/50">
+            <div className="rounded-lg  shadow-sm bg-gradient-to-br from-[#6e0415]/10 to-[#ff2100]/10 border border-vibrant-pink/30">
               <CardHeader className="border-b border-white/10">
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-white flex items-center gap-2">
@@ -317,8 +313,8 @@ export default function Dashboard() {
                     </div>
                     Study Planner
                   </CardTitle>
-                  <Button variant="ghost" size="icon">
-                    <MoreVertical className="h-5 w-5 text-white/70" />
+                  <Button className="text-white/70 hover:text-white hover:bg-[#ff2100]/20  h-10 w-10 bg-transparent ">
+                    <MoreVertical className="h-5 w-5" />
                   </Button>
                 </div>
               </CardHeader>
@@ -334,7 +330,7 @@ export default function Dashboard() {
                       <div className="text-sm text-light-gray">Physics - 45 minutes</div>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start gap-3">
                     <div className="w-5 h-5 mt-0.5 rounded-full bg-[#ff2100]/20 flex items-center justify-center">
                       <CheckCircle2 className="h-4 w-4 text-[#ff2100]" />
@@ -344,7 +340,7 @@ export default function Dashboard() {
                       <div className="text-sm text-light-gray">Calculus - 1 hour</div>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start gap-3">
                     <div className="w-5 h-5 mt-0.5 rounded border border-white/30"></div>
                     <div>
@@ -353,13 +349,13 @@ export default function Dashboard() {
                     </div>
                   </div>
                 </div>
-                
+
                 <Button className="w-full mt-6 bg-gradient-to-r from-[#6e0415] to-[#ff2100] hover:opacity-90">View Schedule</Button>
               </CardContent>
-            </Card>
-            
+            </div>
+
             {/* Knowledge Feed */}
-            <Card className="bg-gradient-to-br from-[#230606]/70 to-[#1d0c0c]/90 border border-[#6e0415]/50">
+            <div className="rounded-lg  shadow-sm bg-gradient-to-br from-[#6e0415]/10 to-[#ff2100]/10 border border-vibrant-pink/30">
               <CardHeader className="border-b border-white/10">
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-white flex items-center gap-2">
@@ -368,34 +364,34 @@ export default function Dashboard() {
                     </div>
                     Knowledge Feed
                   </CardTitle>
-                  <Button variant="ghost" size="icon">
-                    <MoreVertical className="h-5 w-5 text-white/70" />
+                  <Button className="text-white/70 hover:text-white hover:bg-[#ff2100]/20  h-10 w-10 bg-transparent ">
+                    <MoreVertical className="h-5 w-5" />
                   </Button>
                 </div>
               </CardHeader>
               <CardContent className="pt-4 space-y-4">
-                <KnowledgeItem 
+                <KnowledgeItem
                   tag="Trending GitHub repos"
                   title="Awesome LLMs"
                   description="A curated list of Large Language Models resources: tools, papers, and tutorials."
                 />
-                <KnowledgeItem 
+                <KnowledgeItem
                   tag="Lecture by DeepMind"
                   title="Introduction to Neural Networks"
                   description="A comprehensive overview of neural network architectures and applications."
                 />
-                <KnowledgeItem 
+                <KnowledgeItem
                   tag="V.S. Ow, Paper and Kv"
                   title="An Efficient Note Taking Mode for Computer Science Students"
                   description="Research on optimized note-taking methods for technical subjects."
                 />
-                
-                <Button variant="outline" className="w-full mt-2 border-[#6e0415] text-[#ff2100] hover:bg-[#ff2100]/10">Explore More</Button>
+
+                <Button className="w-full mt-6 bg-gradient-to-r from-[#6e0415] to-[#ff2100] hover:opacity-90">Explore More</Button>
               </CardContent>
-            </Card>
-            
+            </div>
+
             {/* Hot Topics */}
-            <Card className="bg-gradient-to-br from-[#230606]/70 to-[#1d0c0c]/90 border border-[#6e0415]/50">
+            <div className="rounded-lg  shadow-sm bg-gradient-to-br from-[#6e0415]/10 to-[#ff2100]/10 border border-vibrant-pink/30">
               <CardHeader className="border-b border-white/10">
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-white flex items-center gap-2">
@@ -408,27 +404,27 @@ export default function Dashboard() {
               </CardHeader>
               <CardContent className="pt-4">
                 <div className="flex flex-wrap gap-2">
-                  <Button variant="outline" className="bg-[#ff2100]/10 hover:bg-[#ff2100]/20 border-[#6e0415] text-white">
+                  <Button className="bg-[#ff2100]/10 hover:bg-[#ff2100]/20 border-[#6e0415] text-white">
                     AI
                   </Button>
-                  <Button variant="outline" className="bg-white/5 hover:bg-white/10 border-white/20 text-white">
+                  <Button className="bg-white/5 hover:bg-white/10 border-white/20 text-white">
                     Data Science
                   </Button>
-                  <Button variant="outline" className="bg-white/5 hover:bg-white/10 border-white/20 text-white">
+                  <Button className="bg-white/5 hover:bg-white/10 border-white/20 text-white">
                     Blockchain
                   </Button>
-                  <Button variant="outline" className="bg-white/5 hover:bg-white/10 border-white/20 text-white">
+                  <Button className="bg-white/5 hover:bg-white/10 border-white/20 text-white">
                     Machine Learning
                   </Button>
-                  <Button variant="outline" className="bg-white/5 hover:bg-white/10 border-white/20 text-white">
+                  <Button className="bg-white/5 hover:bg-white/10 border-white/20 text-white">
                     Web Development
                   </Button>
                 </div>
               </CardContent>
-            </Card>
-            
+            </div>
+
             {/* Community */}
-            <Card className="bg-gradient-to-br from-[#230606]/70 to-[#1d0c0c]/90 border border-[#6e0415]/50">
+            <div className="rounded-lg  shadow-sm bg-gradient-to-br from-[#6e0415]/10 to-[#ff2100]/10 border border-vibrant-pink/30">
               <CardHeader className="border-b border-white/10">
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-white flex items-center gap-2">
@@ -441,25 +437,25 @@ export default function Dashboard() {
               </CardHeader>
               <CardContent className="pt-4">
                 <div className="space-y-3">
-                  <CommunityGroup 
+                  <CommunityGroup
                     name="Advanced AI Study Group"
                     members="24 members"
                     active={true}
                   />
-                  <CommunityGroup 
+                  <CommunityGroup
                     name="Data Science Projects"
                     members="36 members"
                     active={false}
                   />
-                  <CommunityGroup 
+                  <CommunityGroup
                     name="Web Development Mentors"
                     members="18 members"
                     active={true}
                   />
                 </div>
-                <Button variant="outline" className="w-full mt-4 border-[#6e0415] text-[#ff2100] hover:bg-[#ff2100]/10">Find More Groups</Button>
+                <Button className="w-full mt-6 bg-gradient-to-r from-[#6e0415] to-[#ff2100] hover:opacity-90">Find More Groups</Button>
               </CardContent>
-            </Card>
+            </div>
           </div>
         </div>
       </main>
@@ -468,19 +464,11 @@ export default function Dashboard() {
 }
 
 // Dashboard stat component
-function DashboardStat({ icon, value, label, bgColor, borderColor, image }) {
-  if (image) {
-    return (
-      <div className={`bg-[#1d0c0c] border ${borderColor} rounded-lg overflow-hidden`}>
-        <img src={image} alt={label} className="w-full h-auto" />
-      </div>
-    );
-  }
-  
+function DashboardStat({ icon, value, label, bgColor }) {
   return (
-    <div className={`bg-gradient-to-br ${bgColor} border ${borderColor} rounded-lg p-4`}>
+    <div className={`bg-gradient-to-br ${bgColor} border border-vibrant-pink/30 rounded-lg p-4`}>
       <div className="flex items-center gap-3">
-        <div className="p-2 bg-[#1d0c0c]/80 rounded-full">
+        <div className="p-2 bg-dark-gray/40 rounded-full">
           {icon}
         </div>
         <div>
@@ -491,6 +479,7 @@ function DashboardStat({ icon, value, label, bgColor, borderColor, image }) {
     </div>
   );
 }
+
 
 // Activity item component
 function ActivityItem({ icon, title, description, time }) {
