@@ -26,8 +26,7 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center py-12 px-4 bg-gradient-to-tl to-[#070707]  from-[#ff400000] relative">
-      {/* <div className="absolute inset-0 bg-gradient-to-tl to-[#070707]  from-[#ff400000] z-0" /> */}
+    <div className="min-h-screen flex flex-col items-center justify-center py-12 px-4 bg-gradient-to-tl from-[#101010] to-[#0b0b0b] relative">
       <div className="pointer-events-none absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full bg-vibrant-pink/10 blur-3xl opacity-60 z-0"></div>
       <div className="absolute top-0 left-0 w-full p-6">
         <Logo />
@@ -52,7 +51,7 @@ export default function SignupPage() {
               <Input
                 type="email"
                 placeholder="Email address"
-                className="bg-[#1d0c0c]/50 border-[#6e0415]/50 text-white placeholder:text-white/50 focus:ring-[#ff2100]/30 focus:border-[#ff2100]/50"
+                className="bg-[#070707] border-[#520a1d] text-white placeholder:text-white/50 focus:ring-[#ff2100]/30 focus:border-[#ff2100]/50"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -62,7 +61,7 @@ export default function SignupPage() {
               <Input
                 type="text"
                 placeholder="Your role (Student, Educator, etc.)"
-                className="bg-[#1d0c0c]/50 border-[#6e0415]/50 text-white placeholder:text-white/50 focus:ring-[#ff2100]/30 focus:border-[#ff2100]/50"
+                className="bg-[#070707] border-[#520a1d] text-white placeholder:text-white/50 focus:ring-[#ff2100]/30 focus:border-[#ff2100]/50"
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
                 required

@@ -22,8 +22,8 @@ export default function Careers() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8 mb-16">
             {jobOpenings.map((job, index) => (
-              <Card key={index} className="h-full animate-slide-in bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30" style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardContent className="p-8">
+              <Card key={index} className="flex flex-col h-full animate-slide-in bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30" style={{ animationDelay: `${index * 0.1}s` }}>
+                <CardContent className="p-8 flex flex-col h-full">
                   <h3 className="text-2xl font-bold mb-4 text-white">{job.title}</h3>
                   <div className="flex flex-wrap gap-4 mb-6">
                     <div className="flex items-center gap-2 text-light-gray bg-dark-gray/50 px-3 py-1 rounded-full border border-vibrant-pink/20">
@@ -36,7 +36,7 @@ export default function Careers() {
                     </div>
                   </div>
                   <p className="text-light-gray mb-6 border-b border-vibrant-pink/20 pb-4">{job.description}</p>
-                  <div className="mb-6">
+                  <div className="mb-6 flex-grow">
                     <h4 className="font-semibold mb-3 text-white flex items-center gap-2">
                       <Check size={18} className="text-bright-orange" />
                       Requirements
@@ -50,7 +50,7 @@ export default function Careers() {
                       ))}
                     </ul>
                   </div>
-                  <Button className="w-full">Apply Now</Button>
+                  <Button className="w-full mt-auto">Apply Now</Button>
                 </CardContent>
               </Card>
             ))}
@@ -62,8 +62,8 @@ export default function Careers() {
             
             <div className="grid md:grid-cols-3 gap-6">
               {benefits.map((benefit, index) => (
-                <Card key={index} className="animate-slide-in bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30" style={{ animationDelay: `${index * 0.1}s` }}>
-                  <CardContent className="p-6">
+                <Card key={index} className="flex flex-col h-full animate-slide-in bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <CardContent className="p-6 flex flex-col h-full">
                     <div className="flex items-center gap-4 mb-4">
                       <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 rounded-full border border-vibrant-pink/30">
                         <benefit.icon size={24} className="text-bright-orange" />
@@ -71,7 +71,7 @@ export default function Careers() {
                       <h3 className="text-xl font-semibold text-white">{benefit.title}</h3>
                     </div>
                     <p className="text-light-gray mb-4">{benefit.description}</p>
-                    <ul className="space-y-2">
+                    <ul className="space-y-2 flex-grow">
                       {benefit.points.map((point, idx) => (
                         <li key={idx} className="flex items-start gap-2">
                           <Check size={16} className="text-bright-orange mt-1 shrink-0" />

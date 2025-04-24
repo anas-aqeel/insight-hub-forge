@@ -20,15 +20,15 @@ export default function Blog() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <div className="md:col-span-2 animate-slide-in">
               <Card className="overflow-hidden h-full">
-                <CardContent className="p-0 flex flex-col h-full">
-                  <div className="h-64 md:h-96">
+                <CardContent className="p-0 h-full">
+                  <div className="h-64 md:h-72">
                     <img 
                       src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
                       alt="Featured post" 
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="p-8 flex flex-col flex-grow">
+                  <div className="p-8 flex flex-col h-full">
                     <div className="flex items-center gap-4 text-sm text-light-gray mb-4">
                       <div className="flex items-center gap-1">
                         <Calendar size={14} className="text-bright-orange" />
@@ -40,11 +40,11 @@ export default function Blog() {
                       </div>
                     </div>
                     <h3 className="text-2xl font-bold mb-4 text-white">How AI is Transforming Education in 2025</h3>
-                    <p className="text-light-gray mb-6 flex-grow">
+                    <p className="text-light-gray mb-6">
                       Discover how artificial intelligence is revolutionizing the way students learn, teachers teach, and educational institutions operate. From personalized learning paths to advanced analytics, AI is making education more accessible and effective than ever before.
                     </p>
-                    <Button variant="outline" className="flex items-center gap-2 self-start">
-                      Read More <ArrowRight size={16} />
+                    <Button variant="outline" className="flex items-center gap-2 self-start mt-auto">
+                      <Link to="/blog/ai-transforming-education">Read More</Link> <ArrowRight size={16} />
                     </Button>
                   </div>
                 </CardContent>
@@ -83,7 +83,7 @@ export default function Blog() {
           <h2 className="text-3xl font-bold mb-8 text-white">Recent Articles</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {recentPosts.map((post, index) => (
-              <Card key={index} className="overflow-hidden animate-slide-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={index} className="overflow-hidden animate-slide-in flex flex-col" style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardContent className="p-0 flex flex-col h-full">
                   <div className="h-48">
                     <img 
@@ -104,8 +104,8 @@ export default function Blog() {
                       </div>
                     </div>
                     <h3 className="text-xl font-bold mb-3 text-white">{post.title}</h3>
-                    <p className="text-light-gray mb-4 flex-grow">{post.excerpt}</p>
-                    <Link to="#" className="text-bright-orange flex items-center gap-1 hover:underline">
+                    <p className="text-light-gray mb-4">{post.excerpt}</p>
+                    <Link to="#" className="text-bright-orange flex items-center gap-1 hover:underline mt-auto">
                       Read More <ArrowRight size={16} />
                     </Link>
                   </div>

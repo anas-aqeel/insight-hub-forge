@@ -31,8 +31,8 @@ export default function Documentation() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {docCategories.map((category, index) => (
               <div key={index} className="animate-slide-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <Card className="h-full bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30 hover:border-bright-orange transition-all duration-300">
-                  <CardContent className="p-6">
+                <Card className="flex flex-col h-full bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30 hover:border-bright-orange transition-all duration-300">
+                  <CardContent className="p-6 flex flex-col h-full">
                     <div className="flex items-center gap-4 mb-4">
                       <div className="inline-flex items-center justify-center p-3 rounded-full bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 border border-vibrant-pink/30">
                         <category.icon className="h-6 w-6 text-bright-orange" />
@@ -42,7 +42,7 @@ export default function Documentation() {
                     
                     <p className="text-light-gray mb-4 border-b border-vibrant-pink/10 pb-4">{category.description}</p>
                     
-                    <ul className="space-y-3 mt-6">
+                    <ul className="space-y-3 mt-6 flex-grow">
                       {category.topics.map((topic, idx) => (
                         <li key={idx} className="flex items-center gap-2 group">
                           <div className="w-1 h-1 rounded-full bg-bright-orange group-hover:w-2 transition-all duration-200"></div>
@@ -54,7 +54,7 @@ export default function Documentation() {
                       ))}
                     </ul>
                     
-                    <div className="mt-6 flex justify-between items-center">
+                    <div className="mt-6 flex justify-between items-center mt-auto">
                       <div className="text-xs text-light-gray">Updated 2 days ago</div>
                       <Button variant="outline" size="sm" className="text-sm">
                         Browse

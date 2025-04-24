@@ -1,8 +1,9 @@
+
 import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button-custom"
 import { Logo } from "./Logo"
 import { Menu, X, ChevronDown, ChevronUp } from "lucide-react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -17,6 +18,22 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
+  const [openMenu, setOpenMenu] = useState<string | null>(null)
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // Handle click outside to close open menus
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setOpenMenu(null);
+      }
+    }
+    
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,6 +57,10 @@ export function Navbar() {
     setActiveSubmenu(activeSubmenu === menu ? null : menu)
   }
 
+  const handleMenuClick = (menuName: string) => {
+    setOpenMenu(openMenu === menuName ? null : menuName);
+  };
+
   return (
     <header
       className={`py-4 md:py-5 px-4 fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a0a0a]/90 backdrop-blur-lg border-b border-vibrant-pink/20' : 'bg-transparent border-b border-transparent'
@@ -49,7 +70,7 @@ export function Navbar() {
         <Logo />
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-8">
+        <nav className="hidden lg:flex items-center space-x-8" ref={menuRef}>
           <div className="hidden lg:flex gap-x-8">
             <NavigationMenu>
               <NavigationMenuList>
@@ -59,56 +80,66 @@ export function Navbar() {
                   </Link>
                 </NavigationMenuItem>
 
-                <NavigationMenuItem >
-                  <NavigationMenuTrigger className="relative data-[state=open]:bg-transparent border-none bg-transparent hover:bg-transparent hover:text-bright-orange  text-white transition-colors duration-300">
-                    Features
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent className="border-transparent outline-none border-[0px]">
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]  border border-bright-orange/50 rounded-xl">
-                      <FeatureNavItem
-                        title="AI Tutor"
-                        href="/features"
-                        description="Get personalized explanations for any subject"
-                      />
-                      <FeatureNavItem
-                        title="Study Planner"
-                        href="/features"
-                        description="Organize your study sessions efficiently"
-                      />
-                      <FeatureNavItem
-                        title="Knowledge Feed"
-                        href="/features"
-                        description="Discover trending content in your field"
-                      />
-                      <FeatureNavItem
-                        title="Analytics"
-                        href="/features"
-                        description="Track progress and identify areas for improvement"
-                      />
-                      <FeatureNavItem
-                        title="Developer Tools"
-                        href="/features"
-                        description="Special features for CS and STEM students"
-                      />
-                      <FeatureNavItem
-                        title="Community"
-                        href="/features"
-                        description="Connect with peers and experts"
-                      />
-                      <li className="col-span-2 mt-2">
-                        <Link
-                          to="/features"
-                          className="w-full inline-block text-center p-2 px-4 rounded-md bg-gradient-to-r from-[#6e0415]/50 to-[#ff2100]/50 border border-[#6e0415] text-white hover:bg-gradient-to-r hover:from-[#6e0415]/70 hover:to-[#ff2100]/70 transition-colors"
-                        >
-                          View All Features
-                        </Link>
-                      </li>
-                    </ul>
-                  </NavigationMenuContent>
+                <NavigationMenuItem className="relative">
+                  <div 
+                    onClick={() => handleMenuClick('features')} 
+                    className={`flex items-center cursor-pointer px-4 py-2 rounded-md ${openMenu === 'features' ? 'border-b-2 border-[#ff3f00]' : 'hover:text-bright-orange'} transition-colors duration-300`}
+                  >
+                    <span className="text-white">Features</span>
+                    {openMenu === 'features' ? (
+                      <ChevronUp size={16} className="ml-1" />
+                    ) : (
+                      <ChevronDown size={16} className="ml-1" />
+                    )}
+                  </div>
+                  
+                  {openMenu === 'features' && (
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 z-50">
+                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-[#1d0c0c] border border-bright-orange/50 rounded-xl shadow-lg">
+                        <FeatureNavItem
+                          title="AI Tutor"
+                          href="/features"
+                          description="Get personalized explanations for any subject"
+                        />
+                        <FeatureNavItem
+                          title="Study Planner"
+                          href="/features"
+                          description="Organize your study sessions efficiently"
+                        />
+                        <FeatureNavItem
+                          title="Knowledge Feed"
+                          href="/features"
+                          description="Discover trending content in your field"
+                        />
+                        <FeatureNavItem
+                          title="Analytics"
+                          href="/features"
+                          description="Track progress and identify areas for improvement"
+                        />
+                        <FeatureNavItem
+                          title="Developer Tools"
+                          href="/features"
+                          description="Special features for CS and STEM students"
+                        />
+                        <FeatureNavItem
+                          title="Community"
+                          href="/features"
+                          description="Connect with peers and experts"
+                        />
+                        <li className="col-span-2 mt-2">
+                          <Link
+                            to="/features"
+                            className="w-full inline-block text-center p-2 px-4 rounded-md bg-gradient-to-r from-[#6e0415]/50 to-[#ff2100]/50 border border-[#6e0415] text-white hover:bg-gradient-to-r hover:from-[#6e0415]/70 hover:to-[#ff2100]/70 transition-colors"
+                          >
+                            View All Features
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                  )}
                 </NavigationMenuItem>
 
                 <NavigationMenuItem className="mr-4">
-
                   <Link to="/pricing" className="text-white hover:text-bright-orange transition-colors">
                     Pricing
                   </Link>
@@ -121,36 +152,44 @@ export function Navbar() {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem className="relative">
-
-                  <NavigationMenuTrigger className="relative data-[state=open]:bg-transparent border-none bg-transparent hover:bg-transparent hover:text-bright-orange  text-white transition-colors duration-300">
-
-                    Resources
-
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent >
-                    <ul className="grid w-[200px] gap-3 p-4 bg-[#1d0c0c] border border-bright-orange/50 rounded-xl">
-                      <ResourceNavItem
-                        title="Help Center"
-                        href="/help-center"
-                      />
-                      <ResourceNavItem
-                        title="Documentation"
-                        href="/documentation"
-                      />
-                      <ResourceNavItem
-                        title="Tutorials"
-                        href="/tutorials"
-                      />
-                      <ResourceNavItem
-                        title="Webinars"
-                        href="/webinars"
-                      />
-                      <ResourceNavItem
-                        title="Blog"
-                        href="/blog"
-                      />
-                    </ul>
-                  </NavigationMenuContent>
+                  <div 
+                    onClick={() => handleMenuClick('resources')} 
+                    className={`flex items-center cursor-pointer px-4 py-2 rounded-md ${openMenu === 'resources' ? 'border-b-2 border-[#ff3f00]' : 'hover:text-bright-orange'} transition-colors duration-300`}
+                  >
+                    <span className="text-white">Resources</span>
+                    {openMenu === 'resources' ? (
+                      <ChevronUp size={16} className="ml-1" />
+                    ) : (
+                      <ChevronDown size={16} className="ml-1" />
+                    )}
+                  </div>
+                  
+                  {openMenu === 'resources' && (
+                    <div className="absolute top-full right-0 mt-2 z-50">
+                      <ul className="grid w-[200px] gap-3 p-4 bg-[#1d0c0c] border border-bright-orange/50 rounded-xl shadow-lg">
+                        <ResourceNavItem
+                          title="Help Center"
+                          href="/help-center"
+                        />
+                        <ResourceNavItem
+                          title="Documentation"
+                          href="/documentation"
+                        />
+                        <ResourceNavItem
+                          title="Tutorials"
+                          href="/tutorials"
+                        />
+                        <ResourceNavItem
+                          title="Webinars"
+                          href="/webinars"
+                        />
+                        <ResourceNavItem
+                          title="Blog"
+                          href="/blog"
+                        />
+                      </ul>
+                    </div>
+                  )}
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>

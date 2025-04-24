@@ -1,239 +1,264 @@
 
 import { PageLayout } from "@/components/PageLayout";
 import { PageHeader } from "@/components/PageHeader";
-import { MessageSquare, Mail, Phone, MapPin, Clock, Send, CheckCircle, Linkedin, Twitter, Github, Users, Building, ArrowRight } from "lucide-react";
+import { Mail, MessageSquare, Phone, MapPin, Clock, Building, Send } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card-custom";
 import { Button } from "@/components/ui/button-custom";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
+import { toast } from "sonner";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function ContactUs() {
-  const [submitted, setSubmitted] = useState(false);
-  
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    role: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleRoleChange = (value: string) => {
+    setFormData((prev) => ({ ...prev, role: value }));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    // In a real app, you would send the form data to your server here
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    setTimeout(() => {
+      toast.success("Thank you for your message! We'll get back to you soon.");
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        role: "",
+        message: ""
+      });
+      setIsSubmitting(false);
+    }, 1500);
   };
 
   return (
     <PageLayout>
       <PageHeader 
-        icon={MessageSquare}
-        title="Get in Touch"
-        description="Have questions about InsightHub? We're here to help! Reach out to our team for support, feedback, or partnership inquiries."
+        icon={Mail}
+        title="Contact Us"
+        description="Have questions or need assistance? We're here to help."
       />
       
-      <section className="py-12 relative">
-        <div className="absolute top-0 left-1/4 w-72 h-72 bg-vibrant-pink/10 rounded-full blur-3xl -z-10"></div>
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-bright-orange/10 rounded-full blur-3xl -z-10"></div>
-        
+      <section className="py-12">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-7 flex flex-col gap-8">
-              <Card className="bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border border-vibrant-pink/30 p-1 hover:border-bright-orange animate-slide-in h-full flex flex-col">
-                <CardContent className="p-8 flex-1 flex flex-col">
-                  {submitted ? (
-                    <div className="flex flex-col items-center justify-center py-8 flex-1">
-                      <div className="w-16 h-16 rounded-full bg-[#ff2100]/20 flex items-center justify-center mb-4">
-                        <CheckCircle size={32} className="text-[#ff2100]" />
-                      </div>
-                      <h3 className="text-2xl font-bold mb-2 text-white">Message Sent!</h3>
-                      <p className="text-light-gray text-center max-w-md mb-6">
-                        Thank you for reaching out. Our team will get back to you within 24 hours.
-                      </p>
-                      <Button onClick={() => setSubmitted(false)} 
-                        className="bg-gradient-to-r from-[#6e0415] to-[#ff2100] text-white hover:opacity-90">
-                        Send Another Message
-                      </Button>
+          <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-5xl mx-auto">
+            <Card className="overflow-hidden bg-gradient-to-br from-[#1d0c0c]/90 to-[#230606]/80 border-[#6e0415]/70 h-full">
+              <CardContent className="p-0 h-full">
+                <div className="p-8 flex flex-col h-full">
+                  <h3 className="text-2xl font-bold mb-6 text-white">Get In Touch</h3>
+                  <p className="text-light-gray mb-8">
+                    Fill out the form and our team will get back to you within 24 hours.
+                  </p>
+                  
+                  <form onSubmit={handleSubmit} className="space-y-6 flex-grow">
+                    <div className="space-y-2">
+                      <label htmlFor="name" className="text-white">Full Name</label>
+                      <Input 
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="Your name"
+                        required
+                        className="bg-[#070707] border-[#520a1d] text-white placeholder:text-white/50 focus:ring-[#ff2100]/30 focus:border-[#ff2100]/50"
+                      />
                     </div>
-                  ) : (
-                    <>
-                      <h3 className="text-2xl font-bold mb-6 text-white flex items-center gap-2">
-                        <Send size={20} className="text-[#ff2100]" />
-                        Send Us a Message
-                      </h3>
-                      <form className="space-y-6 flex-1 flex flex-col" onSubmit={handleSubmit}>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="space-y-2">
-                            <label htmlFor="name" className="text-white font-medium">Name</label>
-                            <Input 
-                              id="name" 
-                              type="text" 
-                              placeholder="Your name" 
-                              className="bg-white/5 border-[#6e0415]/50 text-white placeholder:text-white/50 focus:border-[#ff2100]/50"
-                              required
-                            />
-                          </div>
-                          <div className="space-y-2">
-                            <label htmlFor="email" className="text-white font-medium">Email</label>
-                            <Input 
-                              id="email" 
-                              type="email" 
-                              placeholder="Your email" 
-                              className="bg-white/5 border-[#6e0415]/50 text-white placeholder:text-white/50 focus:border-[#ff2100]/50"
-                              required
-                            />
-                          </div>
-                        </div>
-                        <div className="space-y-2">
-                          <label htmlFor="subject" className="text-white font-medium">Subject</label>
-                          <Input 
-                            id="subject" 
-                            type="text" 
-                            placeholder="Subject" 
-                            className="bg-white/5 border-[#6e0415]/50 text-white placeholder:text-white/50 focus:border-[#ff2100]/50"
-                            required
-                          />
-                        </div>
-                        <div className="space-y-2 flex-1">
-                          <label htmlFor="message" className="text-white font-medium">Message</label>
-                          <Textarea 
-                            id="message" 
-                            placeholder="Your message" 
-                            className="bg-white/5 border-[#6e0415]/50 text-white placeholder:text-white/50 min-h-[150px] flex-1"
-                            required
-                          />
-                        </div>
-                        <Button 
-                          type="submit" 
-                          className="w-full bg-gradient-to-r from-[#6e0415] to-[#ff2100] text-white hover:opacity-90">
-                          Send Message
-                        </Button>
-                      </form>
-                    </>
-                  )}
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border border-vibrant-pink/30 p-1 hover:border-bright-orange animate-slide-in-delay-1">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-6 text-white flex items-center gap-2">
-                    <Users size={20} className="text-[#ff2100]" />
-                    Why Connect With Us?
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="bg-gradient-to-br from-[#6e0415]/10 to-[#ff2100]/10 border border-[#6e0415]/30 rounded-lg p-4">
-                      <CheckCircle size={20} className="text-[#ff2100] mb-2" />
-                      <h4 className="text-white font-medium mb-1">24/7 Support</h4>
-                      <p className="text-sm text-light-gray">Our dedicated team is always available to assist you.</p>
+                    
+                    <div className="space-y-2">
+                      <label htmlFor="email" className="text-white">Email Address</label>
+                      <Input 
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="Your email"
+                        required
+                        className="bg-[#070707] border-[#520a1d] text-white placeholder:text-white/50 focus:ring-[#ff2100]/30 focus:border-[#ff2100]/50"
+                      />
                     </div>
-                    <div className="bg-gradient-to-br from-[#6e0415]/10 to-[#ff2100]/10 border border-[#6e0415]/30 rounded-lg p-4">
-                      <CheckCircle size={20} className="text-[#ff2100] mb-2" />
-                      <h4 className="text-white font-medium mb-1">Personalized Solutions</h4>
-                      <p className="text-sm text-light-gray">We tailor our services to meet your specific needs.</p>
+                    
+                    <div className="space-y-2">
+                      <label htmlFor="subject" className="text-white">Subject</label>
+                      <Input 
+                        id="subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        placeholder="What's this about?"
+                        required
+                        className="bg-[#070707] border-[#520a1d] text-white placeholder:text-white/50 focus:ring-[#ff2100]/30 focus:border-[#ff2100]/50"
+                      />
                     </div>
-                    <div className="bg-gradient-to-br from-[#6e0415]/10 to-[#ff2100]/10 border border-[#6e0415]/30 rounded-lg p-4">
-                      <CheckCircle size={20} className="text-[#ff2100] mb-2" />
-                      <h4 className="text-white font-medium mb-1">Expert Team</h4>
-                      <p className="text-sm text-light-gray">Our professionals bring years of industry experience.</p>
+
+                    <div className="space-y-2">
+                      <label htmlFor="role" className="text-white">Your Role</label>
+                      <Select onValueChange={handleRoleChange} value={formData.role}>
+                        <SelectTrigger id="role" className="bg-[#070707] border-[#520a1d] text-white placeholder:text-white/50 focus:ring-[#ff2100]/30 focus:border-[#ff2100]/50">
+                          <SelectValue placeholder="Select your role" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="student">Student</SelectItem>
+                          <SelectItem value="teacher">Teacher</SelectItem>
+                          <SelectItem value="developer">Developer</SelectItem>
+                          <SelectItem value="researcher">Researcher</SelectItem>
+                          <SelectItem value="parent">Parent</SelectItem>
+                          <SelectItem value="other">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+                    
+                    <div className="space-y-2">
+                      <label htmlFor="message" className="text-white">Message</label>
+                      <Textarea 
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder="Tell us how we can help you"
+                        rows={5}
+                        required
+                        className="bg-[#070707] border-[#520a1d] text-white placeholder:text-white/50 focus:ring-[#ff2100]/30 focus:border-[#ff2100]/50 resize-none"
+                      />
+                    </div>
+                    
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-gradient-to-r from-[#6e0415] to-[#ff2100] text-white hover:opacity-90 transition-opacity"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Sending..." : "Send Message"} <Send className="ml-2 h-4 w-4" />
+                    </Button>
+                  </form>
+                </div>
+              </CardContent>
+            </Card>
             
-            <div className="lg:col-span-5 flex flex-col gap-8">
-              <Card className="h-full bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border border-vibrant-pink/30 p-1 hover:border-bright-orange animate-slide-in-delay-2">
-                <CardContent className="p-8 h-full flex flex-col">
-                  <h3 className="text-2xl font-bold mb-6 text-white flex items-center gap-2">
-                    <MessageSquare size={20} className="text-[#ff2100]" />
-                    Contact Information
-                  </h3>
-                  <div className="space-y-6 flex-1">
-                    <div className="flex items-start gap-4 p-4 bg-gradient-to-br from-[#6e0415]/10 to-[#ff2100]/10 rounded-lg border border-[#6e0415]/30">
-                      <div className="inline-flex items-center justify-center p-3 rounded-full bg-gradient-to-br from-[#6e0415]/20 to-[#ff2100]/20 border border-[#6e0415]/30">
-                        <Mail className="h-6 w-6 text-[#ff2100]" />
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-white">Email</h4>
-                        <p className="text-light-gray">hello@insighthub.com</p>
-                        <p className="text-light-gray">support@insighthub.com</p>
-                      </div>
+            <Card className="bg-gradient-to-br from-[#1d0c0c]/90 to-[#230606]/80 border-[#6e0415]/70 h-full">
+              <CardContent className="p-8 flex flex-col h-full">
+                <h3 className="text-2xl font-bold mb-6 text-white">Contact Information</h3>
+                <p className="text-light-gray mb-8">
+                  Have questions about InsightHub? Our team is here to help. You can reach out to us through any of the channels below.
+                </p>
+                
+                <div className="space-y-6 flex-grow">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 p-3 rounded-full">
+                      <Mail className="h-6 w-6 text-bright-orange" />
                     </div>
-                    
-                    <div className="flex items-start gap-4 p-4 bg-gradient-to-br from-[#6e0415]/10 to-[#ff2100]/10 rounded-lg border border-[#6e0415]/30">
-                      <div className="inline-flex items-center justify-center p-3 rounded-full bg-gradient-to-br from-[#6e0415]/20 to-[#ff2100]/20 border border-[#6e0415]/30">
-                        <Phone className="h-6 w-6 text-[#ff2100]" />
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-white">Phone</h4>
-                        <p className="text-light-gray">+1 (800) 123-4567</p>
-                        <p className="text-light-gray">Mon-Fri 9AM to 6PM EST</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start gap-4 p-4 bg-gradient-to-br from-[#6e0415]/10 to-[#ff2100]/10 rounded-lg border border-[#6e0415]/30">
-                      <div className="inline-flex items-center justify-center p-3 rounded-full bg-gradient-to-br from-[#6e0415]/20 to-[#ff2100]/20 border border-[#6e0415]/30">
-                        <MapPin className="h-6 w-6 text-[#ff2100]" />
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-white">Address</h4>
-                        <p className="text-light-gray">123 Innovation Way</p>
-                        <p className="text-light-gray">San Francisco, CA 94107</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start gap-4 p-4 bg-gradient-to-br from-[#6e0415]/10 to-[#ff2100]/10 rounded-lg border border-[#6e0415]/30">
-                      <div className="inline-flex items-center justify-center p-3 rounded-full bg-gradient-to-br from-[#6e0415]/20 to-[#ff2100]/20 border border-[#6e0415]/30">
-                        <Clock className="h-6 w-6 text-[#ff2100]" />
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-white">Hours</h4>
-                        <p className="text-light-gray">Monday - Friday: 9AM - 6PM EST</p>
-                        <p className="text-light-gray">Saturday - Sunday: Closed</p>
-                      </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1">Email Us</h4>
+                      <p className="text-light-gray">support@insighthub.com</p>
+                      <p className="text-light-gray">partnerships@insighthub.com</p>
                     </div>
                   </div>
                   
-                  <div className="mt-8">
-                    <h4 className="text-lg font-semibold text-white mb-4">Connect With Us</h4>
-                    <div className="flex space-x-3">
-                      <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-[#1d0c0c]/80 border border-[#6e0415]/50 text-[#ff2100] hover:bg-[#ff2100]/20 hover:border-[#ff2100]/50 transition-colors">
-                        <Twitter size={18} />
-                      </a>
-                      <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-[#1d0c0c]/80 border border-[#6e0415]/50 text-[#ff2100] hover:bg-[#ff2100]/20 hover:border-[#ff2100]/50 transition-colors">
-                        <Linkedin size={18} />
-                      </a>
-                      <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-[#1d0c0c]/80 border border-[#6e0415]/50 text-[#ff2100] hover:bg-[#ff2100]/20 hover:border-[#ff2100]/50 transition-colors">
-                        <Github size={18} />
-                      </a>
+                  <div className="flex items-start gap-4">
+                    <div className="bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 p-3 rounded-full">
+                      <Phone className="h-6 w-6 text-bright-orange" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1">Call Us</h4>
+                      <p className="text-light-gray">+1 (800) 123-4567</p>
+                      <p className="text-light-gray">Monday to Friday, 9am - 6pm EST</p>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border border-vibrant-pink/30 p-1 hover:border-bright-orange animate-slide-in-delay-3">
-                <CardContent className="p-8">
-                  <h3 className="text-xl font-bold mb-4 text-white flex items-center gap-2">
-                    <Building size={20} className="text-[#ff2100]" />
-                    Enterprise Solutions
-                  </h3>
-                  <p className="text-light-gray mb-4">
-                    Looking for enterprise-grade solutions for your organization? Our dedicated team is ready to help.
-                  </p>
-                  <Button variant="outline" className="w-full flex justify-center items-center border-[#6e0415] text-[#ff2100] hover:bg-[#ff2100]/10">
-                    Contact Enterprise Sales <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
+                  
+                  <div className="flex items-start gap-4">
+                    <div className="bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 p-3 rounded-full">
+                      <MapPin className="h-6 w-6 text-bright-orange" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1">Visit Us</h4>
+                      <p className="text-light-gray">
+                        123 Innovation Drive<br />
+                        Suite 456<br />
+                        San Francisco, CA 94103
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="border-t border-vibrant-pink/20 pt-6 mt-8">
+                  <h4 className="font-semibold text-white mb-4">Business Hours</h4>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="flex items-center gap-2">
+                      <Clock className="h-4 w-4 text-bright-orange" />
+                      <span className="text-light-gray">Monday - Friday</span>
+                    </div>
+                    <span className="text-light-gray">9:00 AM - 6:00 PM EST</span>
+                    
+                    <div className="flex items-center gap-2">
+                      <Clock className="h-4 w-4 text-bright-orange" />
+                      <span className="text-light-gray">Saturday</span>
+                    </div>
+                    <span className="text-light-gray">10:00 AM - 4:00 PM EST</span>
+                    
+                    <div className="flex items-center gap-2">
+                      <Clock className="h-4 w-4 text-bright-orange" />
+                      <span className="text-light-gray">Sunday</span>
+                    </div>
+                    <span className="text-light-gray">Closed</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
           
-          <div className="mt-16 animate-slide-in-delay-4">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12615.196342306962!2d-122.4194!3d37.7749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858092a4904f9f%3A0xbae1a55d969a3d7a!2sSan%20Francisco%2C%20CA%2C%20USA!5e0!3m2!1sen!2s!4v1635184106028!5m2!1sen!2s" 
-              width="100%" 
-              height="400" 
-              style={{ border: 0, borderRadius: '0.75rem' }} 
-              allowFullScreen 
-              loading="lazy"
-              className="border border-[#6e0415]/30 rounded-xl"
-            ></iframe>
+          <div className="max-w-5xl mx-auto mt-20">
+            <h2 className="text-3xl font-bold mb-12 text-center text-white">Frequently Asked Questions</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              {faqs.map((faq, index) => (
+                <div key={index} className="bg-gradient-to-br from-[#1d0c0c]/50 to-[#230606]/40 border border-vibrant-pink/20 rounded-xl p-6">
+                  <h3 className="text-xl font-semibold mb-4 text-white">{faq.question}</h3>
+                  <p className="text-light-gray">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
     </PageLayout>
   );
 }
+
+const faqs = [
+  {
+    question: "How quickly can I expect a response?",
+    answer: "We aim to respond to all inquiries within 24 hours during business days. For urgent matters, we recommend calling our support line."
+  },
+  {
+    question: "Do you offer technical support?",
+    answer: "Yes, our technical support team is available Monday through Friday from 9am to 6pm EST. You can reach them via email at tech@insighthub.com."
+  },
+  {
+    question: "Can I schedule a demo of InsightHub?",
+    answer: "Absolutely! Fill out the contact form and select 'Demo Request' as the subject, or email us directly at demos@insighthub.com."
+  },
+  {
+    question: "How do I report a bug or suggest a feature?",
+    answer: "We welcome your feedback! Please use the contact form and select 'Bug Report' or 'Feature Suggestion' as the subject, or email feedback@insighthub.com."
+  }
+];

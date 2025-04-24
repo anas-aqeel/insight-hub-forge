@@ -59,8 +59,8 @@ export default function HelpCenter() {
           <h2 className="text-2xl font-bold mb-6 text-center text-white animate-slide-in-delay-2">How Can We Help You?</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {supportCategories.map((category, index) => (
-              <Card key={index} className="h-full animate-slide-in bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30 hover:border-bright-orange transition-all duration-300" style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardContent className="p-6">
+              <Card key={index} className="flex flex-col h-full animate-slide-in bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30 hover:border-bright-orange transition-all duration-300" style={{ animationDelay: `${index * 0.1}s` }}>
+                <CardContent className="p-6 flex flex-col h-full">
                   <div className="mb-4">
                     <div className="inline-flex items-center justify-center p-3 rounded-full bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 border border-vibrant-pink/30">
                       <category.icon className="h-6 w-6 text-bright-orange" />
@@ -68,7 +68,7 @@ export default function HelpCenter() {
                   </div>
                   <h3 className="text-xl font-semibold mb-3 text-white">{category.title}</h3>
                   <p className="text-light-gray mb-4">{category.description}</p>
-                  <ul className="space-y-2 mb-4">
+                  <ul className="space-y-2 mb-4 flex-grow">
                     {category.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-2">
                         <Check size={16} className="text-bright-orange mt-1 shrink-0" />
@@ -76,7 +76,7 @@ export default function HelpCenter() {
                       </li>
                     ))}
                   </ul>
-                  <Button variant="outline" className="w-full flex items-center justify-center">
+                  <Button variant="outline" className="w-full flex items-center justify-center mt-auto">
                     Explore <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </CardContent>

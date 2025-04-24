@@ -23,7 +23,7 @@ export default function About() {
           
           {/* Vision Section */}
           <div className="flex flex-col md:flex-row items-center gap-8 mb-20 animate-slide-in-delay-1">
-            <div className="md:w-1/2">
+            <div className="md:w-1/2 w-full max-w-[380px] mx-auto">
               <div className="rounded-xl overflow-hidden border border-vibrant-pink/30 bg-gradient-to-br from-dark-gray/70 to-dark-gray/30">
                 <div className="w-full h-64 bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 flex items-center justify-center">
                   <Target size={120} className="text-bright-orange opacity-30" />
@@ -46,7 +46,7 @@ export default function About() {
           
           {/* Our Story */}
           <div className="flex flex-col md:flex-row-reverse items-center gap-8 mb-20 animate-slide-in-delay-2">
-            <div className="md:w-1/2">
+            <div className="md:w-1/2 w-full max-w-[380px] mx-auto">
               <div className="rounded-xl overflow-hidden border border-vibrant-pink/30 bg-gradient-to-br from-dark-gray/70 to-dark-gray/30">
                 <div className="w-full h-64 bg-gradient-to-br from-vibrant-pink/20 to-bright-orange/20 flex items-center justify-center">
                   <Clock size={120} className="text-bright-orange opacity-30" />
@@ -77,7 +77,7 @@ export default function About() {
               <Star size={24} className="text-bright-orange" />
               Our Core Values
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {coreValues.map((value, index) => (
                 <Card key={index} className="h-full bg-gradient-to-br from-dark-gray/70 to-dark-gray/30 border-vibrant-pink/30">
                   <CardContent className="p-6 flex flex-col items-center text-center">
